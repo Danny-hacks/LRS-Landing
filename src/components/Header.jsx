@@ -42,20 +42,14 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center sm:justify-between gap-3 py-1.5">
             <div className="flex items-center gap-4">
-              {/* CICC Badge */}
-              <div className="flex items-center gap-2">
-                <div className="w-14 h-7 bg-white rounded flex items-center justify-center text-[10px] font-black text-navy-900 tracking-wider border border-white/20 flex-shrink-0">
-                  CICC
-                </div>
-                <span className="hidden sm:block text-white/60 text-[11px]">Regulated</span>
+              {/* CICC Logo */}
+              <div className="bg-white rounded px-2 py-1 flex-shrink-0">
+                <img src="/cicc-logo.png" alt="CICC — College of Immigration and Citizenship Consultants" className="h-5 w-auto" />
               </div>
               <span className="text-white/20 text-xs">|</span>
               {/* RCIC Badge */}
-              <div className="flex items-center gap-2">
-                <div className="w-14 h-7 bg-canada-red rounded flex items-center justify-center text-[10px] font-black text-white tracking-wider flex-shrink-0">
-                  RCIC
-                </div>
-                <span className="hidden sm:block text-white/60 text-[11px]">Licensed</span>
+              <div className="bg-white rounded p-1 flex-shrink-0">
+                <img src="/rcic-badge.png" alt="RCIC — Regulated Canadian Immigration Consultant" className="h-5 w-auto" />
               </div>
             </div>
             <p className="hidden lg:block text-white/50 text-[11px]">

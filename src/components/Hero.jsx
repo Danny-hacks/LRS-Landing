@@ -1,5 +1,5 @@
 // ─── Hero: Full-bleed — directional gradient, Canadian flag visible right ──────
-import { ArrowRight, Shield } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   const scrollTo = (id) => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -40,10 +40,21 @@ export default function Hero() {
           </h1>
 
           {/* Subtext */}
-          <p className="hero-3 text-white/75 text-lg leading-relaxed mb-10 max-w-lg">
+          <p className="hero-3 text-white/75 text-lg leading-relaxed mb-7 max-w-lg">
             Licensed immigration and settlement support for individuals and families —
             from Mauritius to your new home in Canada.
           </p>
+
+          {/* CICC / RCIC Credential Badges */}
+          <div className="hero-3 flex flex-wrap items-center gap-3 mb-10">
+            <span className="text-white/50 text-xs font-medium uppercase tracking-widest">Regulated by</span>
+            <div className="bg-white rounded-lg px-3 py-1.5 shadow-sm">
+              <img src="/cicc-logo.png" alt="CICC — College of Immigration and Citizenship Consultants" className="h-7 w-auto" />
+            </div>
+            <div className="bg-white rounded-lg p-1.5 shadow-sm">
+              <img src="/rcic-badge.png" alt="RCIC — Regulated Canadian Immigration Consultant" className="h-7 w-auto" />
+            </div>
+          </div>
 
           {/* CTAs — solid, no glass */}
           <div className="hero-4 flex flex-col sm:flex-row gap-3 mb-14">
@@ -86,11 +97,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* RCIC trust line */}
-          <div className="hero-5 flex items-center gap-2 mt-5">
-            <Shield size={11} className="text-canada-red flex-shrink-0" />
-            <p className="text-white/40 text-xs">RCIC / CICC Licensed · License No: XXXXXXX · 5.0 ★ Google Reviews</p>
-          </div>
 
         </div>
       </div>
