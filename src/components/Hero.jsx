@@ -34,7 +34,7 @@ export default function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="hero-2 text-5xl sm:text-6xl xl:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6">
+          <h1 className="hero-2 text-4xl sm:text-6xl xl:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6">
             Your Bridge to<br />a New Life<br />
             <span className="text-canada-red">in Canada.</span>
           </h1>
@@ -46,28 +46,26 @@ export default function Hero() {
           </p>
 
           {/* CICC / RCIC Credential Badges */}
-          <div className="hero-3 flex flex-wrap items-center gap-4 mb-10 p-4 rounded-xl border border-white/20 bg-white/5 w-fit">
-            <span className="text-white/60 text-xs font-semibold uppercase tracking-widest">Regulated by</span>
-            <div className="w-px h-10 bg-white/20" />
-            {/* CICC */}
-            <div className="flex items-center gap-2.5">
-              <div className="bg-white rounded-lg px-3 py-2 shadow-md flex-shrink-0">
-                <img src="/cicc-logo.png" alt="CICC" className="h-8 w-auto" />
+          <div className="hero-3 mb-10">
+            <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-3">Regulated by</p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              {/* CICC */}
+              <div className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-md w-fit">
+                <img src="/cicc-logo.png" alt="CICC" className="h-8 w-auto flex-shrink-0" />
+                <div className="w-px h-8 bg-gray-200" />
+                <div>
+                  <p className="text-navy-900 text-xs font-bold leading-tight">CICC</p>
+                  <p className="text-navy-500 text-[10px] leading-tight">College of Immigration<br/>& Citizenship Consultants</p>
+                </div>
               </div>
-              <div>
-                <p className="text-white text-xs font-bold leading-tight">CICC</p>
-                <p className="text-white/50 text-[10px] leading-tight">College of Immigration<br/>& Citizenship Consultants</p>
-              </div>
-            </div>
-            <div className="w-px h-10 bg-white/20" />
-            {/* RCIC */}
-            <div className="flex items-center gap-2.5">
-              <div className="bg-white rounded-lg p-2 shadow-md flex-shrink-0">
-                <img src="/rcic-badge.png" alt="RCIC" className="h-8 w-auto" />
-              </div>
-              <div>
-                <p className="text-white text-xs font-bold leading-tight">RCIC</p>
-                <p className="text-white/50 text-[10px] leading-tight">Regulated Canadian<br/>Immigration Consultant</p>
+              {/* RCIC */}
+              <div className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-md w-fit">
+                <img src="/rcic-badge.png" alt="RCIC" className="h-8 w-auto flex-shrink-0" />
+                <div className="w-px h-8 bg-gray-200" />
+                <div>
+                  <p className="text-navy-900 text-xs font-bold leading-tight">RCIC</p>
+                  <p className="text-navy-500 text-[10px] leading-tight">Regulated Canadian<br/>Immigration Consultant</p>
+                </div>
               </div>
             </div>
           </div>
@@ -91,7 +89,7 @@ export default function Hero() {
           </div>
 
           {/* Stats row */}
-          <div className="hero-5 flex flex-wrap items-center gap-x-8 gap-y-4 pt-8 border-t border-white/20">
+          <div className="hero-5 flex flex-wrap items-center gap-x-5 sm:gap-x-8 gap-y-4 pt-8 border-t border-white/20">
             <div>
               <p className="text-3xl font-black text-white leading-none">100+</p>
               <p className="text-xs text-white/55 mt-1">Families Guided</p>
