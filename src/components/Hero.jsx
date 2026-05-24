@@ -27,12 +27,6 @@ export default function Hero() {
       <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 xl:px-20 pt-32 pb-20 lg:pt-36 lg:pb-28">
         <div className="max-w-2xl">
 
-          {/* Eyebrow — solid, no glass */}
-          <div className="hero-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/40 text-white text-xs font-semibold mb-7">
-            <span className="text-base leading-none">🇨🇦</span>
-            Immigration &amp; Settlement Consultants
-          </div>
-
           {/* Headline */}
           <h1 className="hero-2 text-4xl sm:text-6xl xl:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6">
             Your Bridge to<br />a New Life<br />
