@@ -24,7 +24,7 @@ export default function Hero() {
       />
 
       {/* Content — extra top padding on mobile so it clears the fixed header */}
-      <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 xl:px-20 pt-44 pb-20 lg:pt-48 lg:pb-28">
+      <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 xl:px-20 pt-32 pb-20 lg:pt-36 lg:pb-28">
         <div className="max-w-2xl">
 
           {/* Eyebrow — solid, no glass */}
@@ -46,13 +46,29 @@ export default function Hero() {
           </p>
 
           {/* CICC / RCIC Credential Badges */}
-          <div className="hero-3 flex flex-wrap items-center gap-3 mb-10">
-            <span className="text-white/50 text-xs font-medium uppercase tracking-widest">Regulated by</span>
-            <div className="bg-white rounded-lg px-3 py-1.5 shadow-sm">
-              <img src="/cicc-logo.png" alt="CICC — College of Immigration and Citizenship Consultants" className="h-7 w-auto" />
+          <div className="hero-3 flex flex-wrap items-center gap-4 mb-10 p-4 rounded-xl border border-white/20 bg-white/5 w-fit">
+            <span className="text-white/60 text-xs font-semibold uppercase tracking-widest">Regulated by</span>
+            <div className="w-px h-10 bg-white/20" />
+            {/* CICC */}
+            <div className="flex items-center gap-2.5">
+              <div className="bg-white rounded-lg px-3 py-2 shadow-md flex-shrink-0">
+                <img src="/cicc-logo.png" alt="CICC" className="h-8 w-auto" />
+              </div>
+              <div>
+                <p className="text-white text-xs font-bold leading-tight">CICC</p>
+                <p className="text-white/50 text-[10px] leading-tight">College of Immigration<br/>& Citizenship Consultants</p>
+              </div>
             </div>
-            <div className="bg-white rounded-lg p-1.5 shadow-sm">
-              <img src="/rcic-badge.png" alt="RCIC — Regulated Canadian Immigration Consultant" className="h-7 w-auto" />
+            <div className="w-px h-10 bg-white/20" />
+            {/* RCIC */}
+            <div className="flex items-center gap-2.5">
+              <div className="bg-white rounded-lg p-2 shadow-md flex-shrink-0">
+                <img src="/rcic-badge.png" alt="RCIC" className="h-8 w-auto" />
+              </div>
+              <div>
+                <p className="text-white text-xs font-bold leading-tight">RCIC</p>
+                <p className="text-white/50 text-[10px] leading-tight">Regulated Canadian<br/>Immigration Consultant</p>
+              </div>
             </div>
           </div>
 
