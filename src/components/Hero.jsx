@@ -24,7 +24,7 @@ export default function Hero() {
       />
 
       {/* Content — extra top padding on mobile so it clears the fixed header */}
-      <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 xl:px-20 pt-32 pb-20 lg:pt-36 lg:pb-28">
+      <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 xl:px-20 pt-44 pb-20 lg:pt-48 lg:pb-28">
         <div className="max-w-2xl">
 
           {/* Eyebrow — solid, no glass */}

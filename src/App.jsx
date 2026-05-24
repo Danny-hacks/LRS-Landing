@@ -30,6 +30,7 @@ import ConsultationCTA from './components/ConsultationCTA';
 import ContactSection  from './components/ContactSection';
 import Footer          from './components/Footer';
 import WhatsAppButton  from './components/WhatsAppButton';
+import StickyCTA       from './components/StickyCTA';
 
 // Section colour rhythm:
 //   Hero            → white left / image right
@@ -62,6 +63,7 @@ export default function App() {
       <ContactSection />
       <Footer />
       <WhatsAppButton />
+      <StickyCTA />
     </div>
   );
 }
