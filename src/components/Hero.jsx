@@ -48,7 +48,7 @@ export default function Hero() {
 {/* RCIC / CRIC Credential Badge */}
 <div className="hero-3 mb-5">
   <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-2">
-    RCIC / CICC Licensed
+    RCIC / CRIC Licensed
   </p>
 
   <div className="w-fit max-w-full">
