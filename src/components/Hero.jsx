@@ -41,28 +41,42 @@ export default function Hero() {
 
           {/* CICC / RCIC Credential Badges */}
           <div className="hero-3 mb-10">
-            <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-3">Regulated by</p>
+            {/* <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-3">Regulated by</p> */}
             <div className="flex flex-col sm:flex-row gap-3">
               {/* CICC */}
-              <div className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-md w-fit">
-                <img src="/cicc-logo.png" alt="CICC" className="h-8 w-auto flex-shrink-0" />
-                <div className="w-px h-8 bg-gray-200" />
-                <div>
-                  <p className="text-navy-900 text-xs font-bold leading-tight">CICC</p>
-                  <p className="text-navy-500 text-[10px] leading-tight">College of Immigration<br/>& Citizenship Consultants</p>
-                </div>
-              </div>
-              {/* RCIC */}
-              <div className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-md w-fit">
-                <img src="/rcic-badge.png" alt="RCIC" className="h-8 w-auto flex-shrink-0" />
-                <div className="w-px h-8 bg-gray-200" />
-                <div>
-                  <p className="text-navy-900 text-xs font-bold leading-tight">RCIC</p>
-                  <p className="text-navy-500 text-[10px] leading-tight">Regulated Canadian<br/>Immigration Consultant</p>
-                </div>
-              </div>
-            </div>
-          </div>
+<div className="flex flex-col sm:flex-row gap-3">
+{/* RCIC / CRIC Credential Badge */}
+<div className="hero-3 mb-5">
+  <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-2">
+    RCIC / CICC Licensed
+  </p>
+
+  <div className="w-fit max-w-full">
+    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
+      {/* Insignia only — displayed exactly as uploaded in media library */}
+      <img
+        src="/rcic-cric-logo.jpg"
+        alt="RCIC CRIC Regulated Canadian Immigration Consultant Insignia"
+        className="self-start h-18 sm:h-20 md:h-24 w-auto max-w-full object-contain flex-shrink-0"
+      />
+
+      {/* Licensed name immediately adjacent to the insignia */}
+      <div className="flex sm:min-h-[5rem] sm:items-center">
+        <p className="text-white text-sm sm:text-base md:text-lg font-extrabold leading-tight uppercase tracking-wide">
+          LICENSED NAME HERE
+        </p>
+      </div>
+    </div>
+
+    {/* Required verification wording */}
+    <p className="mt-2 text-white/70 text-[11px] sm:text-xs leading-snug max-w-md text-left">
+      Verify Status with the College of Immigration and Citizenship Consultants
+    </p>
+  </div>
+</div>
+</div>
+  </div>
+        </div>
 
           {/* CTAs — solid, no glass */}
           <div className="hero-4 flex flex-col sm:flex-row gap-3 mb-14">
