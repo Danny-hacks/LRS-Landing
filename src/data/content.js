@@ -72,7 +72,7 @@ export const trustItems = [
   {
     icon: 'Shield',
     label: 'RCIC / CICC Licensed',
-    sub: 'License No: XXXXXXX',
+    sub: 'RCIC #R510526',
   },
   {
     icon: 'Star',

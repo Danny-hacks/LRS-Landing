@@ -82,9 +82,9 @@ export default function WhyChooseLRS() {
             <div className="flex items-start gap-4 bg-white rounded-xl border border-gray-100 shadow-sm p-5">
               <Shield size={18} className="text-canada-red flex-shrink-0 mt-0.5" />
               <p className="text-navy-600 text-sm leading-relaxed">
-                <strong className="text-navy-900">CICC / RCIC Regulated</strong> — All LRS advice is delivered within
-                the full regulatory framework of the College of Immigration and Citizenship Consultants.
-                License No: XXXXXXX.
+                <strong className="text-navy-900">CICC / RCIC Regulated</strong> — All LRS advice is delivered by
+                Mr. Amalsingh Badal within the full regulatory framework of the College of Immigration and
+                Citizenship Consultants. License No: R510526.
               </p>
             </div>
           </div>

@@ -39,46 +39,44 @@ export default function Hero() {
             from Mauritius to your new home in Canada.
           </p>
 
-          {/* CICC / RCIC Credential Badges */}
+          {/* RCIC / CRIC Credential Badge */}
           <div className="hero-3 mb-10">
-            {/* <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-3">Regulated by</p> */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              {/* CICC */}
-<div className="flex flex-col sm:flex-row gap-3">
-{/* RCIC / CRIC Credential Badge */}
-<div className="hero-3 mb-5">
-  <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-2">
-    RCIC / CRIC Licensed
-  </p>
+            <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-2">
+              RCIC / CRIC Licensed
+            </p>
+            <div className="w-fit max-w-full">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
+                {/* Insignia */}
+                <img
+                  src="/rcic-cric-logo.jpg"
+                  alt="RCIC · CRIC — Regulated Canadian Immigration Consultant Insignia"
+                  className="self-start h-20 sm:h-20 md:h-24 w-auto max-w-full object-contain flex-shrink-0"
+                />
+                {/* Licensed name immediately adjacent to insignia — CICC Code s.44 */}
+                <div className="flex sm:min-h-[5rem] sm:items-center">
+                  <div>
+                    <p className="text-white text-sm sm:text-base md:text-lg font-extrabold leading-tight uppercase tracking-wide">
+                      Mr. Amalsingh Badal
+                    </p>
+                    <p className="text-white/60 text-xs sm:text-sm font-medium mt-1 tracking-wide">
+                      RCIC · License #R510526
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {/* Required verification wording */}
+              <a
+                href="https://register.college-ic.ca"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-block text-white/45 text-[11px] hover:text-white/70 transition-colors underline underline-offset-2"
+              >
+                Verify status at register.college-ic.ca
+              </a>
+            </div>
+          </div>
 
-  <div className="w-fit max-w-full">
-    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
-      {/* Insignia only — displayed exactly as uploaded in media library */}
-      <img
-        src="/rcic-cric-logo.jpg"
-        alt="RCIC CRIC Regulated Canadian Immigration Consultant Insignia"
-        className="self-start h-18 sm:h-20 md:h-24 w-auto max-w-full object-contain flex-shrink-0"
-      />
-
-      {/* Licensed name immediately adjacent to the insignia */}
-      <div className="flex sm:min-h-[5rem] sm:items-center">
-        <p className="text-white text-sm sm:text-base md:text-lg font-extrabold leading-tight uppercase tracking-wide">
-          LICENSED NAME HERE
-        </p>
-      </div>
-    </div>
-
-    {/* Required verification wording */}
-    <p className="mt-2 text-white/70 text-[11px] sm:text-xs leading-snug max-w-md text-left">
-      Verify Status with the College of Immigration and Citizenship Consultants
-    </p>
-  </div>
-</div>
-</div>
-  </div>
-        </div>
-
-          {/* CTAs — solid, no glass */}
+          {/* CTAs */}
           <div className="hero-4 flex flex-col sm:flex-row gap-3 mb-14">
             <a
               href="#assessment"
@@ -118,7 +116,6 @@ export default function Hero() {
               <p className="text-xs text-white/55 mt-1">Two Countries</p>
             </div>
           </div>
-
 
         </div>
       </div>

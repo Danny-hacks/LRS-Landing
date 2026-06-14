@@ -27,7 +27,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-1.5 text-white/55 text-xs mb-2">
               <Shield size={11} className="text-canada-red" />
-              RCIC / CICC Licensed — No: XXXXXXX
+              Mr. Amalsingh Badal · RCIC #R510526
             </div>
             <div className="flex items-center gap-1.5 text-white/50 text-xs">
               <Globe size={11} />
@@ -119,7 +119,8 @@ export default function Footer() {
               <strong className="text-white/60">Disclaimer:</strong> LRS provides professional immigration
               and settlement guidance. Immigration outcomes depend on individual eligibility, documentation,
               and official government decisions. LRS does not guarantee approval. All advice is subject to
-              CICC regulations and professional standards. License No: XXXXXXX.
+              CICC regulations and professional standards. Mr. Amalsingh Badal, RCIC — License No: R510526. Membre du Registre Québécois des Consultants en Immigration #11570. Verify licence status at{' '}
+              <a href="https://register.college-ic.ca" target="_blank" rel="noopener noreferrer" className="underline hover:text-white/70 transition-colors">register.college-ic.ca</a>.
             </p>
           </div>
         </div>
