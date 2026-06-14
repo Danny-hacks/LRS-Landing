@@ -1,15 +1,15 @@
-// ─── Header: Transparent on hero, solid white on scroll ──────────────────────
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { immigrationServices, settlementServices } from '../data/content';
 
 const navLinks = [
-  { label: 'Home',        href: '#home' },
-  { label: 'Immigration', href: '#services',   dropdown: immigrationServices },
-  { label: 'Settlement',  href: '#settlement', dropdown: settlementServices },
-  { label: 'Assessment',  href: '#assessment' },
-  { label: 'About Us',    href: '#about' },
-  { label: 'Contact',     href: '#contact' },
+  { label: 'Home',        href: '/' },
+  { label: 'Immigration', href: '/#services',   dropdown: immigrationServices },
+  { label: 'Settlement',  href: '/#settlement', dropdown: settlementServices },
+  { label: 'Assessment',  href: '/#assessment' },
+  { label: 'About Us',    href: '/about' },
+  { label: 'Contact',     href: '/#contact' },
 ];
 
 export default function Header() {
@@ -18,6 +18,10 @@ export default function Header() {
   const [lang, setLang]                     = useState('EN');
   const [mobileExpanded, setMobileExpanded] = useState(null);
 
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const isHome = pathname === '/';
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -25,7 +29,26 @@ export default function Header() {
   }, []);
 
   const close = () => { setOpen(false); setMobileExpanded(null); };
-  const scrollTo = (href) => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+
+  const handleNav = (href) => {
+    close();
+    if (href === '/') {
+      if (isHome) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        navigate('/');
+      }
+    } else if (href.startsWith('/#')) {
+      const hash = href.slice(1);
+      if (isHome) {
+        document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        navigate(href);
+      }
+    } else {
+      navigate(href);
+    }
+  };
 
   const solid = scrolled || open;
 
@@ -40,8 +63,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-[76px] gap-4">
 
-          {/* Logo — solid white pill on transparent header, no bg when scrolled (white header) */}
-          <a href="#home" onClick={close} className="flex-shrink-0">
+          <a href="/" onClick={(e) => { e.preventDefault(); handleNav('/'); }} className="flex-shrink-0">
             <div className={`transition-all duration-300 ${solid ? '' : 'bg-white rounded-xl px-2 py-1'}`}>
               <img src="/Logo.png" alt="Lifetime Resettlement Services" className="h-12 w-auto" />
             </div>
@@ -54,7 +76,7 @@ export default function Header() {
                 <div key={label} className="relative group">
                   <a
                     href={href}
-                    onClick={(e) => { e.preventDefault(); scrollTo(href); }}
+                    onClick={(e) => { e.preventDefault(); handleNav(href); }}
                     className={`flex items-center gap-1 whitespace-nowrap px-3 py-2 text-[13px] font-medium rounded-lg transition-colors ${
                       solid
                         ? 'text-navy-700 hover:text-navy-900 hover:bg-navy-50'
@@ -68,11 +90,11 @@ export default function Header() {
                     group-hover:pointer-events-auto group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                     transition-all duration-150">
                     <div className="bg-white rounded-xl shadow-nav border border-gray-100 py-1.5 w-52">
-                      {dropdown.map(({ label: dLabel }) => (
+                      {dropdown.map(({ label: dLabel, href: dHref }) => (
                         <a
                           key={dLabel}
-                          href={href}
-                          onClick={(e) => { e.preventDefault(); scrollTo(href); }}
+                          href={dHref}
+                          onClick={(e) => { e.preventDefault(); handleNav(dHref); }}
                           className="block px-4 py-2.5 text-[13px] text-navy-600 hover:bg-navy-50 hover:text-navy-900 transition-colors"
                         >
                           {dLabel}
@@ -85,7 +107,7 @@ export default function Header() {
                 <a
                   key={label}
                   href={href}
-                  onClick={(e) => { e.preventDefault(); scrollTo(href); }}
+                  onClick={(e) => { e.preventDefault(); handleNav(href); }}
                   className={`whitespace-nowrap px-3 py-2 text-[13px] font-medium rounded-lg transition-colors ${
                     solid
                       ? 'text-navy-700 hover:text-navy-900 hover:bg-navy-50'
@@ -100,7 +122,6 @@ export default function Header() {
 
           {/* Desktop right */}
           <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
-            {/* EN/FR toggle */}
             <div className={`flex items-center text-[13px] font-medium rounded-lg overflow-hidden border transition-colors ${
               solid ? 'border-gray-200' : 'border-white/30'
             }`}>
@@ -122,8 +143,8 @@ export default function Header() {
               >FR</button>
             </div>
             <a
-              href="#assessment"
-              onClick={(e) => { e.preventDefault(); scrollTo('#assessment'); }}
+              href="/#assessment"
+              onClick={(e) => { e.preventDefault(); handleNav('/#assessment'); }}
               className="whitespace-nowrap px-4 py-2 rounded-lg bg-canada-red text-white text-[13px] font-semibold hover:bg-canada-red-dark transition-colors btn-primary"
             >
               Get Started
@@ -143,7 +164,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu — always solid white */}
+      {/* Mobile menu */}
       {open && (
         <div className="lg:hidden bg-white border-t border-gray-100 px-4 pt-3 pb-5 shadow-lg">
           <nav className="flex flex-col gap-0.5 mb-4">
@@ -159,11 +180,11 @@ export default function Header() {
                   </button>
                   {mobileExpanded === label && (
                     <div className="ml-4 border-l-2 border-canada-red/30 pl-3 pb-1">
-                      {dropdown.map(({ label: dLabel }) => (
+                      {dropdown.map(({ label: dLabel, href: dHref }) => (
                         <a
                           key={dLabel}
-                          href={href}
-                          onClick={(e) => { e.preventDefault(); scrollTo(href); close(); }}
+                          href={dHref}
+                          onClick={(e) => { e.preventDefault(); handleNav(dHref); }}
                           className="block py-2 text-sm text-navy-500 hover:text-navy-900 transition-colors"
                         >
                           {dLabel}
@@ -176,7 +197,7 @@ export default function Header() {
                 <a
                   key={label}
                   href={href}
-                  onClick={(e) => { e.preventDefault(); scrollTo(href); close(); }}
+                  onClick={(e) => { e.preventDefault(); handleNav(href); }}
                   className="px-4 py-3 text-sm font-medium text-navy-700 rounded-lg hover:bg-navy-50 transition-colors"
                 >
                   {label}
@@ -190,8 +211,8 @@ export default function Header() {
               <button onClick={() => setLang('FR')} className={`px-3 py-1.5 transition-colors ${lang === 'FR' ? 'bg-canada-red text-white' : 'text-navy-400'}`}>FR</button>
             </div>
             <a
-              href="#assessment"
-              onClick={(e) => { e.preventDefault(); scrollTo('#assessment'); close(); }}
+              href="/#assessment"
+              onClick={(e) => { e.preventDefault(); handleNav('/#assessment'); }}
               className="px-5 py-2.5 rounded-lg bg-canada-red text-white text-sm font-semibold btn-primary"
             >
               Get Started

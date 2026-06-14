@@ -2,19 +2,19 @@
 // Edit these arrays to update content without touching component logic.
 
 export const immigrationServices = [
-  { label: 'Permanent Residency', href: '#' },
-  { label: 'Express Entry / PNPs', href: '#' },
-  { label: 'Work Permits', href: '#' },
-  { label: 'LMIA & LMIA-Exempt', href: '#' },
-  { label: 'Study Permits', href: '#' },
-  { label: 'Family Sponsorship', href: '#' },
+  { label: 'Permanent Residency', href: '/services/permanent-residency' },
+  { label: 'Express Entry / PNPs', href: '/services/express-entry' },
+  { label: 'Work Permits', href: '/services/work-permits' },
+  { label: 'LMIA & LMIA-Exempt', href: '/services/work-permits#lmia' },
+  { label: 'Study Permits', href: '/services/study-permits' },
+  { label: 'Family Sponsorship', href: '/services/family-sponsorship' },
 ];
 
 export const settlementServices = [
-  { label: 'Pre-Landing Orientation', href: '#' },
-  { label: 'Housing & Accommodation', href: '#' },
-  { label: 'SIN, Health Card & Banking', href: '#' },
-  { label: 'Job Search & Resume Support', href: '#' },
+  { label: 'Pre-Landing Orientation', href: '/settlement/pre-landing' },
+  { label: 'Housing & Accommodation', href: '/settlement/housing' },
+  { label: 'SIN, Health Card & Banking', href: '/settlement/sin-health-banking' },
+  { label: 'Job Search & Resume Support', href: '/settlement/job-search-resume' },
 ];
 
 export const serviceCards = [

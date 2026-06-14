@@ -1,69 +1,60 @@
-// ─── Lifetime Resettlement Services — Landing Page ────────────────────────────
-// Clean redesign: simple, warm, premium service business website
-//
-// Section colour rhythm (for WordPress / Thrive Architect rebuild reference):
-//   Header          → white (always solid)
-//   Hero            → white left / image right
-//   TrustStrip      → white with border separator
-//   ProblemDesire   → white
-//   ServiceGrid     → warm-50 (#fdfcfb)
-//   ThreeSteps      → white
-//   MidPageCTA      → navy-900 (#091e42)
-//   AssessmentForm  → navy-50 (#f0f5ff)
-//   WhyChooseLRS    → warm-50 (#fdfcfb)
-//   Testimonials    → white
-//   ConsultationCTA → navy-900 left / image right
-//   ContactSection  → white
-//   Footer          → navy-950 (#040f24)
-
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import Header          from './components/Header';
-import Hero            from './components/Hero';
-import TrustStrip      from './components/TrustStrip';
-import ProblemDesire   from './components/ProblemDesire';
-import ChooseYourPath  from './components/ChooseYourPath';
-import ServiceGrid     from './components/ServiceGrid';
-import ThreeSteps      from './components/ThreeSteps';
-import AssessmentForm  from './components/AssessmentForm';
-import WhyChooseLRS    from './components/WhyChooseLRS';
-import Testimonials    from './components/Testimonials';
-import ConsultationCTA from './components/ConsultationCTA';
-import ContactSection  from './components/ContactSection';
 import Footer          from './components/Footer';
 import WhatsAppButton  from './components/WhatsAppButton';
 import StickyCTA       from './components/StickyCTA';
+import HomePage        from './pages/HomePage';
+import AboutPage       from './pages/AboutPage';
+import PermanentResidencyPage  from './pages/services/PermanentResidencyPage';
+import ExpressEntryPage        from './pages/services/ExpressEntryPage';
+import WorkPermitsPage         from './pages/services/WorkPermitsPage';
+import StudyPermitsPage        from './pages/services/StudyPermitsPage';
+import FamilySponsorshipPage   from './pages/services/FamilySponsorshipPage';
+import PreLandingPage          from './pages/settlement/PreLandingPage';
+import HousingPage             from './pages/settlement/HousingPage';
+import SinBankingPage          from './pages/settlement/SinBankingPage';
+import JobSearchPage           from './pages/settlement/JobSearchPage';
 
-// Section colour rhythm:
-//   Hero            → white left / image right
-//   TrustStrip      → navy-950 bar
-//   ProblemDesire   → white
-//   ChooseYourPath  → white (continuous, two-card bridge)
-//   ServiceGrid     → warm-50  ← wave top from white
-//   ThreeSteps      → dark cn-img.png  ← wave top from warm-50, wave bottom into navy-50
-//   AssessmentForm  → navy-50
-//   WhyChooseLRS    → warm-50  ← wave top from navy-50
-//   Testimonials    → white  ← wave top from warm-50
-//   ConsultationCTA → navy-900 left / image right
-//   ContactSection  → white  ← wave top from navy-900
-//   Footer          → navy-950
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (!hash) window.scrollTo(0, 0);
+  }, [pathname, hash]);
+  return null;
+}
 
-export default function App() {
+function AppRoutes() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
+      <ScrollToTop />
       <Header />
-      <Hero />
-      <TrustStrip />
-      <ProblemDesire />
-      <ChooseYourPath />
-      <ServiceGrid />
-      <ThreeSteps />
-      <AssessmentForm />
-      <WhyChooseLRS />
-      <Testimonials />
-      <ConsultationCTA />
-      <ContactSection />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/"                              element={<HomePage />} />
+          <Route path="/about"                         element={<AboutPage />} />
+          <Route path="/services/permanent-residency"  element={<PermanentResidencyPage />} />
+          <Route path="/services/express-entry"        element={<ExpressEntryPage />} />
+          <Route path="/services/work-permits"         element={<WorkPermitsPage />} />
+          <Route path="/services/study-permits"        element={<StudyPermitsPage />} />
+          <Route path="/services/family-sponsorship"   element={<FamilySponsorshipPage />} />
+          <Route path="/settlement/pre-landing"        element={<PreLandingPage />} />
+          <Route path="/settlement/housing"            element={<HousingPage />} />
+          <Route path="/settlement/sin-health-banking" element={<SinBankingPage />} />
+          <Route path="/settlement/job-search-resume"  element={<JobSearchPage />} />
+        </Routes>
+      </main>
       <Footer />
       <WhatsAppButton />
       <StickyCTA />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
