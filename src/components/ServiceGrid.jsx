@@ -44,7 +44,7 @@ const columns = [
     services: [
       { label: 'Eligibility Review', href: '/assessment' },
       { label: 'Document Guidance', href: '/assessment' },
-      { label: 'Strategy Session', href: '/#contact' },
+      { label: 'Strategy Session', href: '/contact' },
       { label: 'Application Planning', href: '/assessment' },
       { label: 'Next-Step Roadmap', href: '/about' },
     ],

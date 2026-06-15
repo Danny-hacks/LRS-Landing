@@ -163,7 +163,7 @@ export default function SinBankingPage() {
               <p className="text-navy-500 text-sm leading-relaxed mb-6">
                 LRS provides a customized day-by-day action plan for your first 30 days in Canada — covering every registration, appointment, and financial step.
               </p>
-              <Link to="/#contact" className="inline-flex items-center justify-center w-full px-6 py-3.5 rounded-lg bg-canada-red text-white font-semibold text-sm hover:bg-canada-red-dark transition-colors btn-primary">
+              <Link to="/contact" className="inline-flex items-center justify-center w-full px-6 py-3.5 rounded-lg bg-canada-red text-white font-semibold text-sm hover:bg-canada-red-dark transition-colors btn-primary">
                 Book a Session
               </Link>
             </div>

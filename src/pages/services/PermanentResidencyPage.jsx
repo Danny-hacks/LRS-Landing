@@ -207,7 +207,7 @@ export default function PermanentResidencyPage() {
                 Start Free Assessment
               </Link>
               <Link
-                to="/#contact"
+                to="/contact"
                 className="inline-flex items-center justify-center w-full mt-3 px-6 py-3.5 rounded-lg border border-navy-200 text-navy-700 font-semibold text-sm hover:bg-navy-50 transition-colors"
               >
                 Book a Consultation

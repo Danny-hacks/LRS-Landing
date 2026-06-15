@@ -154,7 +154,7 @@ export default function HousingPage() {
               <p className="text-navy-500 text-sm leading-relaxed mb-6">
                 LRS's housing session is available as part of the pre-landing orientation or as a standalone consultation. Sessions available in English or French.
               </p>
-              <Link to="/#contact" className="inline-flex items-center justify-center w-full px-6 py-3.5 rounded-lg bg-canada-red text-white font-semibold text-sm hover:bg-canada-red-dark transition-colors btn-primary">
+              <Link to="/contact" className="inline-flex items-center justify-center w-full px-6 py-3.5 rounded-lg bg-canada-red text-white font-semibold text-sm hover:bg-canada-red-dark transition-colors btn-primary">
                 Book a Consultation
               </Link>
             </div>

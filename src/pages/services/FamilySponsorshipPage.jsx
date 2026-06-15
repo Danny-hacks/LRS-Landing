@@ -200,7 +200,7 @@ export default function FamilySponsorshipPage() {
               <p className="text-navy-500 text-sm leading-relaxed mb-6">
                 Book a consultation with LRS. We'll assess your sponsorship eligibility and outline the complete process and timeline for your family's reunification.
               </p>
-              <Link to="/#contact" className="inline-flex items-center justify-center w-full px-6 py-3.5 rounded-lg bg-canada-red text-white font-semibold text-sm hover:bg-canada-red-dark transition-colors btn-primary">
+              <Link to="/contact" className="inline-flex items-center justify-center w-full px-6 py-3.5 rounded-lg bg-canada-red text-white font-semibold text-sm hover:bg-canada-red-dark transition-colors btn-primary">
                 Book a Consultation
               </Link>
               <Link to="/#assessment" className="inline-flex items-center justify-center w-full mt-3 px-6 py-3.5 rounded-lg border border-navy-200 text-navy-700 font-semibold text-sm hover:bg-navy-50 transition-colors">

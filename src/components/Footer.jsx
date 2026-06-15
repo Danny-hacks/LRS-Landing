@@ -5,7 +5,7 @@ import { immigrationServices, settlementServices } from '../data/content';
 const exploreLinks = [
   { label: 'Assessment', href: '/#assessment' },
   { label: 'About Us',   href: '/about' },
-  { label: 'Contact',    href: '/#contact' },
+  { label: 'Contact',    href: '/contact' },
 ];
 
 export default function Footer() {

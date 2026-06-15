@@ -9,7 +9,7 @@ const navLinks = [
   { label: 'Settlement',  href: '/#settlement', dropdown: settlementServices },
   { label: 'Assessment',  href: '/assessment' },
   { label: 'About Us',    href: '/about' },
-  { label: 'Contact',     href: '/#contact' },
+  { label: 'Contact',     href: '/contact' },
 ];
 
 export default function Header() {

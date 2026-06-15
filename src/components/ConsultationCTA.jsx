@@ -29,7 +29,7 @@ export default function ConsultationCTA() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <button
-                onClick={() => navTo('/#contact')}
+                onClick={() => navTo('/contact')}
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-white text-canada-red font-semibold text-sm hover:bg-gray-50 transition-colors btn-primary"
               >
                 <Calendar size={15} />
