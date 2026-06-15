@@ -1,16 +1,14 @@
-import { Briefcase, Globe, Shield, Users, CheckCircle, Clock } from 'lucide-react';
+import { Briefcase, Globe, Shield, Users, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageHero from '../../components/PageHero';
 import FAQAccordion from '../../components/FAQAccordion';
-import ConsultationCTA from '../../components/ConsultationCTA';
 import SectionLabel from '../../components/SectionLabel';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const permitTypes = [
   { icon: Briefcase, title: 'LMIA-Based Permits', description: 'Employer obtains a Labour Market Impact Assessment proving no Canadian worker was available. LRS guides both employee and employer through the process.' },
   { icon: Globe, title: 'Open Work Permits', description: 'Work for any employer in Canada. Common types: Post-Graduation (PGWP), Spousal (SOWP), and Bridging Open Work Permits (BOWP).' },
   { icon: Shield, title: 'LMIA-Exempt Streams', description: 'Intra-company transfers, CUSMA professionals, International Mobility Program (IMP), and significant benefit categories.' },
-  { icon: Users, title: 'International Experience Canada', description: 'Youth work permits for eligible countries. Mauritius is a participating country — LRS advises on IEC eligibility and application.' },
+  { icon: Users, title: 'International Experience Canada', description: 'Youth work permits for eligible countries. Over 35 countries participate in IEC — LRS confirms your eligibility and guides the application.' },
 ];
 
 const lmiaExempt = [
@@ -57,8 +55,8 @@ const faqs = [
     a: 'You may apply for a Bridging Open Work Permit (BOWP) if you have a pending PR application and your current permit expires before a decision. LRS monitors your status and files the BOWP at the right time.',
   },
   {
-    q: 'Can Mauritius citizens apply under IEC?',
-    a: 'Yes — Mauritius is a participating country in International Experience Canada. Eligible young adults (typically under 35) can apply for working holiday or young professionals permits. LRS checks current IEC quotas and availability.',
+    q: 'Which countries can apply under IEC?',
+    a: 'Over 35 countries participate in International Experience Canada. Eligible young adults (typically under 35) can apply for working holiday or young professionals permits. LRS confirms your country\'s participation and checks current IEC quotas and availability.',
   },
   {
     q: 'What is a Post-Graduation Work Permit (PGWP)?',
@@ -67,24 +65,21 @@ const faqs = [
 ];
 
 export default function WorkPermitsPage() {
-  const [ref1, v1] = useScrollReveal();
-  const [ref2, v2] = useScrollReveal();
-
   return (
     <>
       <PageHero
-        breadcrumb={[{ label: 'Immigration', href: '/#services' }, { label: 'Work Permits' }]}
         badge="Immigration Services"
-        title="Work Permits for Canada"
-        subtitle="LMIA-based, LMIA-exempt, open work permits, and post-graduation pathways — LRS identifies the right stream and manages your application from start to finish."
-        ctaLabel="Check My Eligibility"
-        ctaHref="/#assessment"
+        title="Work Permits"
+        titleAccent="for Canada"
+        image="/lrs-asset.jpg"
+        compact
       />
 
       {/* Overview */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref1} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-[1fr_300px] gap-10 lg:gap-16 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">Overview</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">Work legally in Canada</h2>
@@ -92,30 +87,39 @@ export default function WorkPermitsPage() {
                 A work permit allows foreign nationals to work legally in Canada for a specific employer (employer-specific) or for any employer (open work permit). The type of permit you need depends on your situation, employer, occupation, and immigration status.
               </p>
               <p className="text-navy-500 leading-relaxed mb-4" id="lmia">
-                Most work permits are either LMIA-based — where the employer must prove no Canadian was available — or LMIA-exempt under a range of international agreements and humanitarian categories.
+                Most work permits are either LMIA-based — where the employer must prove no Canadian was available — or LMIA-exempt under international agreements and humanitarian categories.
               </p>
-              <p className="text-navy-500 leading-relaxed">
-                LRS determines which stream applies to your situation, manages the full application process, and plans your pathway from temporary worker to permanent resident.
+              <p className="text-navy-500 leading-relaxed mb-8">
+                LRS determines which stream applies, manages the full application, and plans your pathway from temporary worker to permanent resident.
               </p>
+              <div className="bg-navy-50 rounded-xl border border-navy-100 p-5">
+                <p className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-3">LMIA-Exempt Categories</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {lmiaExempt.map((item) => (
+                    <div key={item} className="flex items-start gap-2">
+                      <CheckCircle size={11} className="text-canada-red flex-shrink-0 mt-0.5" />
+                      <span className="text-navy-600 text-xs">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="bg-navy-50 rounded-2xl p-6 border border-navy-100">
-              <h3 className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-4">LMIA-Exempt Categories</h3>
-              <ul className="space-y-2.5">
-                {lmiaExempt.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <CheckCircle size={12} className="text-canada-red flex-shrink-0 mt-0.5" />
-                    <span className="text-navy-600 text-xs">{item}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="relative h-80 sm:h-[520px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img6.jpg" alt="Working in Canada" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/65 via-navy-900/10 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Work legally in Canada</p>
+                <p className="text-navy-500 text-xs mt-0.5">LRS identifies your permit stream and files the application</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Permit Types */}
-      <section className="py-20 lg:py-28 bg-warm-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>Permit Categories</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mt-3">Which work permit applies to you?</h2>
@@ -135,54 +139,64 @@ export default function WorkPermitsPage() {
       </section>
 
       {/* Process */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref2} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">The Process</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">How LRS manages your work permit</h2>
-              <p className="text-navy-500 leading-relaxed">
+              <p className="text-navy-500 leading-relaxed mb-8">
                 Work permit applications vary significantly by stream. LRS ensures the right documents are filed in the right way — for both LMIA-based and LMIA-exempt applications.
               </p>
+              <div className="space-y-5">
+                {processSteps.map((step, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-canada-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <h3 className="text-navy-900 font-semibold text-sm mb-1">{step.title}</h3>
+                      <p className="text-navy-500 text-xs leading-relaxed">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="space-y-5">
-              {processSteps.map((step, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="w-8 h-8 rounded-full bg-canada-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    {i + 1}
-                  </div>
-                  <div>
-                    <h3 className="text-navy-900 font-semibold text-sm mb-1">{step.title}</h3>
-                    <p className="text-navy-500 text-xs leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="relative h-80 sm:h-[520px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img7.jpg" alt="Canada work permit pathway" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/65 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Temporary worker to permanent resident</p>
+                <p className="text-navy-500 text-xs mt-0.5">LRS maps your full pathway from permit to PR</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What We Handle */}
-      <section className="py-20 lg:py-28 bg-navy-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* What LRS Handles — dark section */}
+      <section className="relative py-20 lg:py-28 bg-navy-950 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-dark.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <SectionLabel align="left">What LRS Handles</SectionLabel>
-              <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">From permit to permanent residency.</h2>
-              <p className="text-navy-500 leading-relaxed mb-8">
+              <p className="text-canada-red text-xs font-bold uppercase tracking-widest mb-3">What LRS Handles</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-5">From permit to permanent residency.</h2>
+              <p className="text-white/60 text-sm leading-relaxed mb-8">
                 LRS manages your work permit and plans the path to permanent residency — whether through Express Entry, a PNP, or another stream suited to your occupation.
               </p>
               <div className="grid sm:grid-cols-2 gap-y-3 gap-x-6">
                 {included.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle size={14} className="text-canada-red flex-shrink-0 mt-0.5" />
-                    <span className="text-navy-700 text-sm">{item}</span>
+                    <span className="text-white/80 text-sm">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-2xl p-8 border border-navy-100 shadow-sm">
-              <h3 className="text-navy-900 font-semibold mb-2">Not sure which permit you need?</h3>
+            <div className="bg-white rounded-2xl p-8 shadow-card">
+              <h3 className="text-navy-900 font-semibold text-lg mb-2">Not sure which permit you need?</h3>
               <p className="text-navy-500 text-sm leading-relaxed mb-6">
                 Start with LRS's free assessment. We'll identify your stream, confirm eligibility, and outline your complete work permit pathway.
               </p>
@@ -198,8 +212,9 @@ export default function WorkPermitsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>FAQ</SectionLabel>
             <h2 className="text-3xl font-bold text-navy-900 tracking-tight mt-3">Frequently asked questions</h2>
@@ -208,7 +223,6 @@ export default function WorkPermitsPage() {
         </div>
       </section>
 
-      <ConsultationCTA />
     </>
   );
 }

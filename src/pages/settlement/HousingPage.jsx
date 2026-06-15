@@ -1,20 +1,18 @@
-import { Home, MapPin, FileText, Shield, CheckCircle, Clock } from 'lucide-react';
+import { Home, MapPin, FileText, Shield, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageHero from '../../components/PageHero';
 import FAQAccordion from '../../components/FAQAccordion';
-import ConsultationCTA from '../../components/ConsultationCTA';
 import SectionLabel from '../../components/SectionLabel';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const keyTopics = [
   { icon: Home, title: 'Temporary Accommodation', description: 'Airbnb, extended-stay hotels, and newcomer housing programs — LRS recommends trusted options for your first weeks in Canada.' },
-  { icon: MapPin, title: 'Neighbourhood Research', description: 'City-by-city guidance on neighbourhoods, commute considerations, school proximity, and community resources suited to newcomers from Mauritius.' },
+  { icon: MapPin, title: 'Neighbourhood Research', description: 'City-by-city guidance on neighbourhoods, commute considerations, school proximity, and community resources suited to international newcomers.' },
   { icon: FileText, title: 'Rental Applications', description: 'Canadian landlords require references, credit checks, and employment letters. LRS advises on how to meet these requirements as a newcomer with no Canadian credit history.' },
   { icon: Shield, title: 'Lease Review', description: 'Rental agreements in Canada can be complex. LRS guides you on what standard clauses mean, your rights as a tenant, and what to watch out for before signing.' },
 ];
 
 const cityGuide = [
-  { city: 'Ottawa', note: 'Government, bilingual, family-friendly areas. More affordable than Toronto.' },
+  { city: 'Ottawa', note: 'Government hub, bilingual, family-friendly. More affordable than Toronto.' },
   { city: 'Toronto', note: 'Largest city, diverse communities. Mississauga and Brampton offer more affordable options.' },
   { city: 'Montréal', note: 'French-speaking, vibrant culture. Lower rents than other major cities. Great for bilingual newcomers.' },
   { city: 'Calgary / Edmonton', note: 'Strong job markets, lower cost of living, growing newcomer communities.' },
@@ -56,23 +54,21 @@ const faqs = [
 ];
 
 export default function HousingPage() {
-  const [ref1, v1] = useScrollReveal();
-
   return (
     <>
       <PageHero
-        breadcrumb={[{ label: 'Settlement', href: '/#settlement' }, { label: 'Housing & Accommodation' }]}
         badge="Settlement Services"
-        title="Housing & Accommodation in Canada"
-        subtitle="Finding a home in Canada as a newcomer takes preparation. LRS guides you through temporary accommodation, neighbourhood selection, rental applications, and lease review."
-        ctaLabel="Book a Consultation"
-        ctaHref="/#contact"
+        title="Housing & Accommodation"
+        titleAccent="in Canada"
+        image="/canada-img6.jpg"
+        compact
       />
 
       {/* Overview */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref1} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-[1fr_280px] gap-10 lg:gap-16 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">Overview</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
@@ -81,34 +77,40 @@ export default function HousingPage() {
               <p className="text-navy-500 leading-relaxed mb-4">
                 The Canadian rental market is competitive in major cities. Newcomers face a unique challenge: no Canadian credit history, no local references, and no in-person presence to view units before arriving.
               </p>
-              <p className="text-navy-500 leading-relaxed mb-4">
-                LRS's housing guidance gives you the knowledge and strategies to navigate this challenge — from knowing what landlords look for, to understanding tenant rights, to choosing the right neighbourhood for your family.
+              <p className="text-navy-500 leading-relaxed mb-8">
+                LRS's housing guidance gives you the knowledge and strategies to navigate this challenge. We advise on temporary accommodation for your first weeks so you can search for permanent housing in person, with confidence.
               </p>
-              <p className="text-navy-500 leading-relaxed">
-                We advise on temporary accommodation for your first weeks (Airbnb, extended-stay hotels, newcomer housing programs) so you can search for permanent housing in person, with confidence.
-              </p>
-            </div>
-            <div className="bg-navy-50 rounded-2xl p-6 border border-navy-100">
-              <h3 className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-4">City Spotlight</h3>
-              <ul className="space-y-3">
-                {cityGuide.map(({ city, note }) => (
-                  <li key={city} className="flex items-start gap-2">
-                    <MapPin size={12} className="text-canada-red mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="text-navy-700 font-medium text-sm">{city}</p>
-                      <p className="text-navy-500 text-xs leading-snug">{note}</p>
+              <div className="bg-navy-50 rounded-xl border border-navy-100 p-5">
+                <p className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-3">City Spotlight</p>
+                <div className="space-y-3">
+                  {cityGuide.map(({ city, note }) => (
+                    <div key={city} className="flex items-start gap-2.5">
+                      <MapPin size={12} className="text-canada-red flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className="text-navy-900 font-semibold text-sm">{city}</span>
+                        <span className="text-navy-500 text-xs"> — {note}</span>
+                      </div>
                     </div>
-                  </li>
-                ))}
-              </ul>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="relative h-80 sm:h-[520px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img8.jpg" alt="Canadian housing and neighbourhoods" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/65 via-navy-900/10 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Find your home in Canada</p>
+                <p className="text-navy-500 text-xs mt-0.5">LRS advises on temporary stay, then long-term housing</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Key Topics */}
-      <section className="py-20 lg:py-28 bg-warm-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>What We Cover</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mt-3">Housing guidance from search to lease</h2>
@@ -127,27 +129,28 @@ export default function HousingPage() {
         </div>
       </section>
 
-      {/* What We Handle */}
-      <section className="py-20 lg:py-28 bg-navy-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* What LRS Provides — dark section */}
+      <section className="relative py-20 lg:py-28 bg-navy-950 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-dark.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <SectionLabel align="left">What LRS Provides</SectionLabel>
-              <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">Practical housing support for newcomers.</h2>
-              <p className="text-navy-500 leading-relaxed mb-8">
-                LRS combines local Canadian market knowledge with an understanding of the specific challenges newcomers from Mauritius face — no credit history, no local network, long-distance searching.
+              <p className="text-canada-red text-xs font-bold uppercase tracking-widest mb-3">What LRS Provides</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-5">Practical housing support for newcomers.</h2>
+              <p className="text-white/60 text-sm leading-relaxed mb-8">
+                LRS combines local Canadian market knowledge with an understanding of the specific challenges international newcomers face — no credit history, no local network, long-distance searching.
               </p>
               <div className="grid sm:grid-cols-2 gap-y-3 gap-x-6">
                 {included.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle size={14} className="text-canada-red flex-shrink-0 mt-0.5" />
-                    <span className="text-navy-700 text-sm">{item}</span>
+                    <span className="text-white/80 text-sm">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-2xl p-8 border border-navy-100 shadow-sm">
-              <h3 className="text-navy-900 font-semibold mb-2">Start your housing preparation</h3>
+            <div className="bg-white rounded-2xl p-8 shadow-card">
+              <h3 className="text-navy-900 font-semibold text-lg mb-2">Start your housing preparation</h3>
               <p className="text-navy-500 text-sm leading-relaxed mb-6">
                 LRS's housing session is available as part of the pre-landing orientation or as a standalone consultation. Sessions available in English or French.
               </p>
@@ -160,8 +163,9 @@ export default function HousingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>FAQ</SectionLabel>
             <h2 className="text-3xl font-bold text-navy-900 tracking-tight mt-3">Frequently asked questions</h2>
@@ -170,7 +174,6 @@ export default function HousingPage() {
         </div>
       </section>
 
-      <ConsultationCTA />
     </>
   );
 }

@@ -1,10 +1,8 @@
-import { Star, Award, Users, Zap, CheckCircle, TrendingUp, Clock } from 'lucide-react';
+import { Star, Award, Users, Clock, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageHero from '../../components/PageHero';
 import FAQAccordion from '../../components/FAQAccordion';
-import ConsultationCTA from '../../components/ConsultationCTA';
 import SectionLabel from '../../components/SectionLabel';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const programs = [
   { icon: Star, title: 'Federal Skilled Worker', description: 'For skilled workers outside Canada with qualifying work experience, education, and language skills. Minimum CRS criteria apply.' },
@@ -65,48 +63,52 @@ const faqs = [
 ];
 
 export default function ExpressEntryPage() {
-  const [ref1, v1] = useScrollReveal();
-  const [ref2, v2] = useScrollReveal();
-
   return (
     <>
       <PageHero
-        breadcrumb={[{ label: 'Immigration', href: '/#services' }, { label: 'Express Entry / PNPs' }]}
         badge="Immigration Services"
-        title="Express Entry & Provincial Nominees"
-        subtitle="Canada's flagship economic immigration system. LRS optimizes your CRS score, monitors every draw, and submits a complete application within your 60-day window."
-        ctaLabel="Check My Eligibility"
-        ctaHref="/#assessment"
+        title="Express Entry &"
+        titleAccent="Provincial Nominees"
+        image="/canada-img5.jpg"
+        compact
       />
 
       {/* Overview */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref1} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-[1fr_300px] gap-10 lg:gap-16 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">Overview</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
                 How Express Entry works
               </h2>
               <p className="text-navy-500 leading-relaxed mb-4">
-                Express Entry is IRCC's electronic system for managing applications under three federal economic immigration programs. It does not operate on a first-come, first-served basis — instead, it ranks candidates using the Comprehensive Ranking System (CRS) and invites the highest-scoring profiles to apply during regular draws.
+                Express Entry is IRCC's electronic system for managing applications under three federal economic immigration programs. It ranks candidates using the Comprehensive Ranking System (CRS) and invites the highest-scoring profiles during regular draws.
               </p>
-              <p className="text-navy-500 leading-relaxed">
-                Provincial Nominee Programs (PNPs) align with Express Entry by allowing provinces to nominate candidates from the pool — adding 600 CRS points and virtually guaranteeing an ITA. LRS tracks both federal draws and provincial streams to identify the fastest route for your profile.
+              <p className="text-navy-500 leading-relaxed mb-8">
+                Provincial Nominee Programs (PNPs) align with Express Entry by allowing provinces to nominate candidates — adding 600 CRS points and virtually guaranteeing an ITA. LRS tracks both federal draws and provincial streams to find the fastest route for your profile.
               </p>
+              <div className="bg-navy-50 rounded-xl border border-navy-100 overflow-hidden">
+                <div className="px-5 py-3 border-b border-navy-100">
+                  <p className="text-navy-900 font-semibold text-xs uppercase tracking-wide">CRS Score Breakdown</p>
+                </div>
+                <div className="divide-y divide-navy-100">
+                  {crsFactors.map(({ label, points }) => (
+                    <div key={label} className="flex items-center justify-between px-5 py-2.5">
+                      <span className="text-navy-600 text-sm">{label}</span>
+                      <span className="text-canada-red font-semibold text-xs">{points}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="bg-navy-50 rounded-2xl p-6 border border-navy-100">
-              <h3 className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-4">CRS Score Factors</h3>
-              <ul className="space-y-3">
-                {crsFactors.map(({ label, points }) => (
-                  <li key={label} className="flex items-center justify-between">
-                    <span className="text-navy-600 text-sm">{label}</span>
-                    <span className="text-canada-red font-semibold text-xs">{points}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-4 pt-4 border-t border-navy-200">
-                <p className="text-navy-500 text-xs leading-relaxed">CRS scores are cumulative. LRS builds a personalized score improvement strategy for your profile.</p>
+            <div className="relative h-80 sm:h-[520px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img6.jpg" alt="Express Entry to Canada" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/65 via-navy-900/10 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Canada's top economic immigration program</p>
+                <p className="text-navy-500 text-xs mt-0.5">Processed in 6–8 months after ITA</p>
               </div>
             </div>
           </div>
@@ -114,8 +116,9 @@ export default function ExpressEntryPage() {
       </section>
 
       {/* Three Programs */}
-      <section className="py-20 lg:py-28 bg-warm-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>The Three Programs</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mt-3">Which program do you qualify for?</h2>
@@ -135,63 +138,70 @@ export default function ExpressEntryPage() {
       </section>
 
       {/* Process */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref2} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">The Process</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
                 From profile creation to PR
               </h2>
-              <p className="text-navy-500 leading-relaxed mb-8">
+              <p className="text-navy-500 leading-relaxed mb-3">
                 Once you receive an ITA, you have exactly 60 days to submit a complete PR application. Missing this window means starting over. LRS ensures nothing is missed.
               </p>
-              <div className="bg-navy-50 rounded-xl p-5 border border-navy-100">
-                <div className="flex items-center gap-3 mb-2">
-                  <Clock size={14} className="text-canada-red" />
-                  <span className="text-navy-900 font-semibold text-sm">Typical processing time</span>
-                </div>
-                <p className="text-navy-500 text-xs leading-relaxed">Express Entry PR applications are typically processed within 6–8 months of submission. LRS monitors your application status throughout.</p>
+              <div className="bg-navy-50 rounded-xl p-4 border border-navy-100 mb-8 flex items-start gap-3">
+                <Clock size={14} className="text-canada-red flex-shrink-0 mt-0.5" />
+                <p className="text-navy-600 text-xs leading-relaxed">Express Entry PR applications are typically processed within 6–8 months of submission. LRS monitors your application status throughout.</p>
+              </div>
+              <div className="space-y-5">
+                {processSteps.map((step, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-canada-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <h3 className="text-navy-900 font-semibold text-sm mb-1">{step.title}</h3>
+                      <p className="text-navy-500 text-xs leading-relaxed">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="space-y-5">
-              {processSteps.map((step, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="w-8 h-8 rounded-full bg-canada-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    {i + 1}
-                  </div>
-                  <div>
-                    <h3 className="text-navy-900 font-semibold text-sm mb-1">{step.title}</h3>
-                    <p className="text-navy-500 text-xs leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="relative h-80 sm:h-[600px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/tall-canada-img.jpg" alt="Canada — Express Entry pathway" className="absolute inset-0 w-full h-full object-cover object-top" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Canada awaits your ITA</p>
+                <p className="text-navy-500 text-xs mt-0.5">LRS manages every step of your 60-day window</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What We Handle */}
-      <section className="py-20 lg:py-28 bg-navy-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* What LRS Handles — dark section */}
+      <section className="relative py-20 lg:py-28 bg-navy-950 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-dark.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <SectionLabel align="left">What LRS Handles</SectionLabel>
-              <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">Maximizing your profile, every step.</h2>
-              <p className="text-navy-500 leading-relaxed mb-8">
+              <p className="text-canada-red text-xs font-bold uppercase tracking-widest mb-3">What LRS Handles</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-5">Maximizing your profile, every step.</h2>
+              <p className="text-white/60 text-sm leading-relaxed mb-8">
                 A higher CRS score means a faster invitation. LRS actively works to improve your score while managing your profile and monitoring every draw.
               </p>
               <div className="grid sm:grid-cols-2 gap-y-3 gap-x-6">
                 {included.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle size={14} className="text-canada-red flex-shrink-0 mt-0.5" />
-                    <span className="text-navy-700 text-sm">{item}</span>
+                    <span className="text-white/80 text-sm">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-2xl p-8 border border-navy-100 shadow-sm">
-              <h3 className="text-navy-900 font-semibold mb-2">Get your CRS score estimate</h3>
+            <div className="bg-white rounded-2xl p-8 shadow-card">
+              <h3 className="text-navy-900 font-semibold text-lg mb-2">Get your CRS score estimate</h3>
               <p className="text-navy-500 text-sm leading-relaxed mb-6">
                 Complete the free assessment and LRS will calculate your estimated CRS score and recommend the best draw strategy for your profile.
               </p>
@@ -207,8 +217,9 @@ export default function ExpressEntryPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>FAQ</SectionLabel>
             <h2 className="text-3xl font-bold text-navy-900 tracking-tight mt-3">Frequently asked questions</h2>
@@ -217,7 +228,6 @@ export default function ExpressEntryPage() {
         </div>
       </section>
 
-      <ConsultationCTA />
     </>
   );
 }

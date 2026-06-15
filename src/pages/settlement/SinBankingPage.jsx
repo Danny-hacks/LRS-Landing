@@ -1,10 +1,8 @@
-import { CreditCard, Shield, Heart, Globe, CheckCircle, Clock } from 'lucide-react';
+import { CreditCard, Shield, Heart, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageHero from '../../components/PageHero';
 import FAQAccordion from '../../components/FAQAccordion';
-import ConsultationCTA from '../../components/ConsultationCTA';
 import SectionLabel from '../../components/SectionLabel';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const threeSteps = [
   { icon: Shield, title: 'Social Insurance Number (SIN)', description: 'Issued by Service Canada — your SIN is required before you can work legally in Canada, file taxes, or access federal government programs. Apply in person at a Service Canada office or online after landing.' },
@@ -21,7 +19,7 @@ const sinRequirements = [
 ];
 
 const bankComparison = [
-  { bank: 'RBC Royal Bank', program: 'RBC Newcomer Advantage', notes: 'Strong branch network across Canada. French/English.' },
+  { bank: 'RBC Royal Bank', program: 'RBC Newcomer Advantage', notes: 'Strong branch network across Canada. English/French.' },
   { bank: 'TD Canada Trust', program: 'TD New to Canada Banking Package', notes: 'Good mobile banking. Wide ATM network.' },
   { bank: 'Scotiabank', program: 'StartRight Program', notes: 'Strong credit card offer for newcomers. Fee waived 1 year.' },
   { bank: 'BMO', program: 'BMO NewStart Program', notes: 'Good for Montreal newcomers. French language services.' },
@@ -49,7 +47,7 @@ const faqs = [
     a: 'LRS recommends purchasing a travel/newcomer health insurance policy covering major medical emergencies and hospitalization for your first 3 months. Policies from insurers like Manulife, Sun Life, or Allianz typically cost CAD $80–$150/month per person. LRS recommends providers based on your family size and province.',
   },
   {
-    q: 'Which bank is best for newcomers from Mauritius?',
+    q: 'Which bank is best for newcomers to Canada?',
     a: 'All Big 5 banks have newcomer programs. LRS\'s recommendation depends on your province and language preference. For Ontario newcomers, RBC and TD are popular. For Quebec or French-language service, National Bank or Desjardins are strong options. Scotiabank has a well-regarded credit card offer for newcomers.',
   },
   {
@@ -63,22 +61,20 @@ const faqs = [
 ];
 
 export default function SinBankingPage() {
-  const [ref1, v1] = useScrollReveal();
-
   return (
     <>
       <PageHero
-        breadcrumb={[{ label: 'Settlement', href: '/#settlement' }, { label: 'SIN, Health Card & Banking' }]}
         badge="Settlement Services"
-        title="SIN, Health Card & Banking Setup"
-        subtitle="Three critical registrations in your first days in Canada. LRS guides you through your Social Insurance Number, provincial health card, and newcomer bank account — in the right order."
-        ctaLabel="Book Orientation Session"
-        ctaHref="/#contact"
+        title="SIN, Health Card &"
+        titleAccent="Banking Setup"
+        image="/canada-img8.jpg"
+        compact
       />
 
       {/* Overview */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref1} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-14">
             <SectionLabel>Overview</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mt-3 mb-5">
@@ -102,40 +98,37 @@ export default function SinBankingPage() {
         </div>
       </section>
 
-      {/* SIN Requirements */}
-      <section className="py-20 lg:py-28 bg-warm-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      {/* SIN + Banking Details */}
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
               <SectionLabel align="left">Social Insurance Number</SectionLabel>
-              <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
-                What you need to apply
-              </h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-navy-900 tracking-tight mb-5">What you need to apply</h2>
               <p className="text-navy-500 leading-relaxed mb-6">
                 The SIN is a 9-digit number used for working, filing taxes, and accessing government benefits. It is free and typically issued the same day at a Service Canada office. It is your most important document in Canada after your passport and PR card.
               </p>
-              <ul className="space-y-3">
+              <div className="space-y-3">
                 {sinRequirements.map((req, i) => (
-                  <li key={i} className="flex items-start gap-3">
+                  <div key={i} className="flex items-start gap-3">
                     <CheckCircle size={14} className="text-canada-red flex-shrink-0 mt-0.5" />
                     <span className="text-navy-700 text-sm">{req}</span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
             <div>
               <SectionLabel align="left">Newcomer Banking Programs</SectionLabel>
-              <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
-                Choosing the right bank
-              </h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-navy-900 tracking-tight mb-5">Choosing the right bank</h2>
               <p className="text-navy-500 leading-relaxed mb-6">
                 Every major Canadian bank offers a Newcomer Banking Program with reduced or waived monthly fees for the first year. LRS compares the programs and recommends the best fit for your province and language needs.
               </p>
               <div className="space-y-3">
                 {bankComparison.map(({ bank, program, notes }) => (
-                  <div key={bank} className="bg-white rounded-xl p-4 border border-gray-100">
+                  <div key={bank} className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm">
                     <p className="text-navy-900 font-semibold text-sm">{bank}</p>
-                    <p className="text-canada-red text-xs font-medium">{program}</p>
+                    <p className="text-canada-red text-xs font-medium mt-0.5">{program}</p>
                     <p className="text-navy-500 text-xs mt-1">{notes}</p>
                   </div>
                 ))}
@@ -145,27 +138,28 @@ export default function SinBankingPage() {
         </div>
       </section>
 
-      {/* What We Handle */}
-      <section className="py-20 lg:py-28 bg-navy-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* What We Handle — dark section */}
+      <section className="relative py-20 lg:py-28 bg-navy-950 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-dark.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <SectionLabel align="left">What LRS Provides</SectionLabel>
-              <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">Your first 30 days, organized.</h2>
-              <p className="text-navy-500 leading-relaxed mb-8">
+              <p className="text-canada-red text-xs font-bold uppercase tracking-widest mb-3">What LRS Provides</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-5">Your first 30 days, organized.</h2>
+              <p className="text-white/60 text-sm leading-relaxed mb-8">
                 LRS maps out a clear, day-by-day action plan for your first month in Canada — so you complete each registration in the right order without missing a step.
               </p>
               <div className="grid sm:grid-cols-2 gap-y-3 gap-x-6">
                 {included.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle size={14} className="text-canada-red flex-shrink-0 mt-0.5" />
-                    <span className="text-navy-700 text-sm">{item}</span>
+                    <span className="text-white/80 text-sm">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-2xl p-8 border border-navy-100 shadow-sm">
-              <h3 className="text-navy-900 font-semibold mb-2">Get your first-month action plan</h3>
+            <div className="bg-white rounded-2xl p-8 shadow-card">
+              <h3 className="text-navy-900 font-semibold text-lg mb-2">Get your first-month action plan</h3>
               <p className="text-navy-500 text-sm leading-relaxed mb-6">
                 LRS provides a customized day-by-day action plan for your first 30 days in Canada — covering every registration, appointment, and financial step.
               </p>
@@ -178,8 +172,9 @@ export default function SinBankingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>FAQ</SectionLabel>
             <h2 className="text-3xl font-bold text-navy-900 tracking-tight mt-3">Frequently asked questions</h2>
@@ -188,7 +183,6 @@ export default function SinBankingPage() {
         </div>
       </section>
 
-      <ConsultationCTA />
     </>
   );
 }

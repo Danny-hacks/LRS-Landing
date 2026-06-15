@@ -1,13 +1,12 @@
 import { Shield, Globe, Heart, Award, CheckCircle } from 'lucide-react';
 import PageHero from '../components/PageHero';
-import ConsultationCTA from '../components/ConsultationCTA';
 import Testimonials from '../components/Testimonials';
 import SectionLabel from '../components/SectionLabel';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const values = [
   { icon: Shield, title: 'Integrity', description: 'Strict adherence to the CICC Code of Professional Ethics — no shortcuts, no misrepresentation, ever.' },
-  { icon: Globe, title: 'Bilingualism', description: 'Full service in English and French, with cultural familiarity with the Mauritius–Canada journey.' },
+  { icon: Globe, title: 'Bilingualism', description: 'Full service in English and French, with deep cultural awareness of what it means to relocate internationally to Canada.' },
   { icon: Heart, title: 'Human-Centred', description: 'Every client has direct access to their licensed consultant — not a call centre or rotating team.' },
   { icon: Award, title: 'Continuity', description: 'Support from the first eligibility question through to settlement in Canada. We don\'t stop at the visa.' },
 ];
@@ -20,7 +19,7 @@ const milestones = [
 ];
 
 const differences = [
-  'Mauritius-focused expertise — culturally aware and bilingual',
+  'Internationally experienced — culturally aware and bilingual',
   'Settlement services included beyond the visa',
   'Direct access to your RCIC — no intermediaries',
   'Transparent pricing with no hidden fees',
@@ -35,25 +34,25 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        breadcrumb={[{ label: 'About Us' }]}
         badge="Our Story"
-        title="More than immigration. A life-changing partnership."
-        subtitle="Lifetime Resettlement Services was founded to give individuals and families from Mauritius a trusted, licensed partner for their Canada journey — from first step to feeling at home."
-        ctaLabel="Book a Consultation"
-        ctaHref="/#contact"
+        title="More than"
+        titleAccent="immigration."
+        image="/tall-canada-img.jpg"
+        compact
       />
 
       {/* Mission */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div ref={missionRef} className={`reveal ${missionVisible ? 'visible' : ''}`}>
               <SectionLabel align="left">Who We Are</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-6">
                 Licensed. Professional.<br />Genuinely human.
               </h2>
               <p className="text-navy-500 leading-relaxed mb-5">
-                LRS was built around a simple belief: navigating Canada's immigration system should not mean facing it alone. We provide licensed, professional guidance rooted in real familiarity with the Mauritius–Canada journey.
+                LRS was built around a simple belief: navigating Canada's immigration system should not mean facing it alone. We provide licensed, professional guidance rooted in real understanding of the international immigration journey to Canada.
               </p>
               <p className="text-navy-500 leading-relaxed mb-8">
                 Unlike agencies that focus solely on filing forms, LRS stays with clients through every phase — assessment, application, arrival, and integration. Our settlement services mean arriving in Canada is the beginning of something great, not the end of our relationship.
@@ -70,9 +69,9 @@ export default function AboutPage() {
             <div className="relative h-80 sm:h-[500px] rounded-2xl overflow-hidden shadow-card">
               <img src="/lrs-asset.jpg" alt="LRS professional consultation" className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-white font-semibold text-sm">Where your journey begins</p>
-                <p className="text-white/60 text-xs mt-0.5">Lifetime Resettlement Services</p>
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Where your journey begins</p>
+                <p className="text-navy-500 text-xs mt-0.5">Lifetime Resettlement Services</p>
               </div>
             </div>
           </div>
@@ -80,8 +79,9 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20 lg:py-28 bg-warm-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <SectionLabel>Our Values</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mt-3">What we stand for</h2>
@@ -104,8 +104,9 @@ export default function AboutPage() {
       </section>
 
       {/* RCIC Credentials */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>CICC / RCIC Regulated</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mt-3">Your consultant's credentials</h2>
@@ -147,15 +148,16 @@ export default function AboutPage() {
       </section>
 
       {/* Why Different */}
-      <section className="py-20 lg:py-28 bg-warm-50">
-        <div ref={whyRef} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div ref={whyRef} className={`reveal ${whyVisible ? 'visible' : ''}`}>
               <SectionLabel align="left">Why LRS</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-6">What makes us different</h2>
               <p className="text-navy-500 leading-relaxed mb-8">
-                There are many immigration consultants in Canada. Very few have the specific cultural familiarity,
-                bilingual capability, and end-to-end commitment that LRS brings to the Mauritius–Canada journey.
+                There are many immigration consultants in Canada. Very few offer the specific cultural awareness,
+                bilingual capability, and end-to-end commitment that LRS brings to every client's journey.
               </p>
               <div className="space-y-3">
                 {differences.map((d, i) => (
@@ -167,11 +169,11 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative h-80 sm:h-[450px] rounded-2xl overflow-hidden shadow-card">
-              <img src="/tall-canada-img.jpg" alt="Canada — where LRS clients begin their next chapter" className="absolute inset-0 w-full h-full object-cover object-top" />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-white font-semibold text-sm">Canada Place, Vancouver</p>
-                <p className="text-white/60 text-xs mt-0.5">Where new chapters begin for LRS clients</p>
+              <img src="/canada-img8.jpg" alt="Canada — where LRS clients begin their next chapter" className="absolute inset-0 w-full h-full object-cover object-top" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Canada — a new beginning</p>
+                <p className="text-navy-500 text-xs mt-0.5">Where LRS clients write their next chapter</p>
               </div>
             </div>
           </div>
@@ -179,7 +181,6 @@ export default function AboutPage() {
       </section>
 
       <Testimonials />
-      <ConsultationCTA />
     </>
   );
 }

@@ -197,7 +197,7 @@ export default function AssessmentForm() {
                           className={inputCls('phone')}
                           value={form.phone}
                           onChange={(e) => set('phone', e.target.value)}
-                          placeholder="+230 5XXX XXXX"
+                          placeholder="Your phone number (with country code)"
                         />
                       </div>
                       <div>

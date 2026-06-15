@@ -22,7 +22,7 @@ export default function Footer() {
             </div>
             <p className="text-white/55 text-xs leading-relaxed mb-5">
               Immigration and settlement guidance for your journey to Canada. Licensed,
-              professional, and personalized support from Mauritius to your new home.
+              professional, and personalized support wherever your journey begins.
             </p>
             <div className="flex items-center gap-1.5 text-white/55 text-xs mb-2">
               <Shield size={11} className="text-canada-red" />

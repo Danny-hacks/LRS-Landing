@@ -146,7 +146,7 @@ export default function ContactSection() {
 
                   <div>
                     <label className="block text-xs font-medium text-white/80 mb-1.5">Phone / WhatsApp</label>
-                    <input className={inputCls} value={form.phone} onChange={(e) => set('phone', e.target.value)} placeholder="+230 5XXX XXXX" />
+                    <input className={inputCls} value={form.phone} onChange={(e) => set('phone', e.target.value)} placeholder="Your phone number (with country code)" />
                   </div>
 
                   <div>

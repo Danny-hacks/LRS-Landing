@@ -2,9 +2,7 @@ import { MapPin, Shield, BookOpen, Calendar, CheckCircle, Clock } from 'lucide-r
 import { Link } from 'react-router-dom';
 import PageHero from '../../components/PageHero';
 import FAQAccordion from '../../components/FAQAccordion';
-import ConsultationCTA from '../../components/ConsultationCTA';
 import SectionLabel from '../../components/SectionLabel';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const topicsCovered = [
   { icon: Shield, title: 'Understanding Your COPR', description: 'What your Confirmation of Permanent Residence means, what to declare at the border, and documents to carry on arrival.' },
@@ -45,11 +43,11 @@ const faqs = [
   },
   {
     q: 'What is the health card waiting period and how do I get covered in the meantime?',
-    a: 'Most provinces have a 3-month waiting period after landing before your provincial health card is active (e.g., Ontario\'s OHIP, BC\'s MSP). During this period, LRS advises on private interim coverage from insurers that offer newcomer plans — often CAD $80–150 per month per person.',
+    a: 'Most provinces have a 3-month waiting period after landing before your provincial health card is active. During this period, LRS advises on private interim coverage from insurers that offer newcomer plans — often CAD $80–150 per month per person.',
   },
   {
     q: 'Can I open a Canadian bank account before arriving?',
-    a: 'Some banks (RBC, TD, Scotiabank) allow you to start the account opening process online before you land. However, you typically need to visit a branch in person to complete activation with your Canadian documents (COPR or PR card). LRS advises on the best timing and process for your situation.',
+    a: 'Some banks (RBC, TD, Scotiabank) allow you to start the account opening process online before you land. However, you typically need to visit a branch in person to complete activation with your Canadian documents. LRS advises on the best timing and process for your situation.',
   },
   {
     q: 'Do my children need to enrol in school before arriving?',
@@ -58,51 +56,54 @@ const faqs = [
 ];
 
 export default function PreLandingPage() {
-  const [ref1, v1] = useScrollReveal();
-
   return (
     <>
       <PageHero
-        breadcrumb={[{ label: 'Settlement', href: '/#settlement' }, { label: 'Pre-Landing Orientation' }]}
         badge="Settlement Services"
-        title="Pre-Landing Orientation for Canada"
-        subtitle="Arrive in Canada informed and prepared. LRS provides a comprehensive, personalized orientation so you know exactly what to do from the moment you land."
-        ctaLabel="Book Orientation Session"
-        ctaHref="/#contact"
+        title="Pre-Landing Orientation"
+        titleAccent="for Canada"
+        image="/canada-img4.jpg"
+        compact
       />
 
       {/* Overview */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref1} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-[1fr_280px] gap-10 lg:gap-16 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">Overview</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
                 Know what to do before you land
               </h2>
               <p className="text-navy-500 leading-relaxed mb-4">
-                Getting your visa or PR approval is a major milestone — but landing in Canada can still feel overwhelming without the right preparation. LRS's pre-landing orientation gives you a clear, step-by-step picture of what to expect and what to do in your first days and weeks in Canada.
+                Getting your visa or PR approval is a major milestone — but landing in Canada can still feel overwhelming without the right preparation. LRS's pre-landing orientation gives you a clear, step-by-step picture of what to expect in your first days and weeks.
               </p>
-              <p className="text-navy-500 leading-relaxed">
-                Every session is personalized — your destination province, your family size, your immigration status, and your specific timeline. You'll receive a customized landing checklist, province-specific guidance, and referrals to the best settlement resources in your destination city.
+              <p className="text-navy-500 leading-relaxed mb-8">
+                Every session is personalized to your destination province, family size, and immigration status. You'll receive a customized landing checklist, province-specific guidance, and referrals to settlement resources in your destination city.
               </p>
-            </div>
-            <div className="bg-canada-red/5 border border-canada-red/20 rounded-2xl p-6">
-              <h3 className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-4 text-canada-red">Ideal Timing</h3>
               <div className="space-y-3">
                 {[
-                  { label: '1–3 months before landing', note: 'Best for full preparation' },
-                  { label: '2–4 weeks before landing', note: 'Standard timeline' },
-                  { label: 'Within 2 weeks', note: 'Rush sessions available' },
+                  { label: '1–3 months before landing', note: 'Best for full preparation — time to arrange insurance, banking, housing' },
+                  { label: '2–4 weeks before landing', note: 'Standard timeline — covers all critical first steps' },
+                  { label: 'Within 2 weeks', note: 'Rush sessions available — essential landing checklist prioritized' },
                 ].map(({ label, note }) => (
-                  <div key={label} className="flex items-start gap-3">
-                    <Clock size={12} className="text-canada-red mt-0.5 flex-shrink-0" />
+                  <div key={label} className="flex items-start gap-3 bg-navy-50 rounded-xl p-4 border border-navy-100">
+                    <Clock size={14} className="text-canada-red flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-navy-700 font-medium text-sm">{label}</p>
-                      <p className="text-navy-500 text-xs">{note}</p>
+                      <p className="text-navy-900 font-semibold text-sm">{label}</p>
+                      <p className="text-navy-500 text-xs mt-0.5">{note}</p>
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+            <div className="relative h-80 sm:h-[520px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img5.jpg" alt="Arriving in Canada prepared" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/65 via-navy-900/10 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Arrive confident. Land prepared.</p>
+                <p className="text-navy-500 text-xs mt-0.5">LRS customizes your orientation to your province and family</p>
               </div>
             </div>
           </div>
@@ -110,8 +111,9 @@ export default function PreLandingPage() {
       </section>
 
       {/* Topics */}
-      <section className="py-20 lg:py-28 bg-warm-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>What's Covered</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mt-3">Every topic that matters for arrival</h2>
@@ -131,54 +133,64 @@ export default function PreLandingPage() {
       </section>
 
       {/* Process */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">How It Works</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">Your orientation, step by step</h2>
-              <p className="text-navy-500 leading-relaxed">
+              <p className="text-navy-500 leading-relaxed mb-8">
                 LRS's pre-landing orientation is delivered one-on-one by your consultant — customized to your province, family, and landing timeline.
               </p>
+              <div className="space-y-5">
+                {processSteps.map((step, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-canada-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <h3 className="text-navy-900 font-semibold text-sm mb-1">{step.title}</h3>
+                      <p className="text-navy-500 text-xs leading-relaxed">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="space-y-5">
-              {processSteps.map((step, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="w-8 h-8 rounded-full bg-canada-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    {i + 1}
-                  </div>
-                  <div>
-                    <h3 className="text-navy-900 font-semibold text-sm mb-1">{step.title}</h3>
-                    <p className="text-navy-500 text-xs leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="relative h-80 sm:h-[540px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img4.jpg" alt="Canada — first landing steps" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/65 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Your first 30 days in Canada, organized</p>
+                <p className="text-navy-500 text-xs mt-0.5">Sessions via video call or in-person, in English or French</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Checklist */}
-      <section className="py-20 lg:py-28 bg-navy-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Checklist — dark section */}
+      <section className="relative py-20 lg:py-28 bg-navy-950 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-dark.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <SectionLabel align="left">What We Cover</SectionLabel>
-              <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">Your complete landing checklist</h2>
-              <p className="text-navy-500 leading-relaxed mb-8">
+              <p className="text-canada-red text-xs font-bold uppercase tracking-widest mb-3">Your Landing Checklist</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-5">Everything you need to do in your first 30 days.</h2>
+              <p className="text-white/60 text-sm leading-relaxed mb-8">
                 LRS provides a personalized, province-specific checklist covering every step from airport arrival to your first month settled in Canada.
               </p>
               <div className="grid sm:grid-cols-2 gap-y-3 gap-x-6">
                 {checklist.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle size={14} className="text-canada-red flex-shrink-0 mt-0.5" />
-                    <span className="text-navy-700 text-sm">{item}</span>
+                    <span className="text-white/80 text-sm">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-2xl p-8 border border-navy-100 shadow-sm">
-              <h3 className="text-navy-900 font-semibold mb-2">Book your pre-landing session</h3>
+            <div className="bg-white rounded-2xl p-8 shadow-card">
+              <h3 className="text-navy-900 font-semibold text-lg mb-2">Book your pre-landing session</h3>
               <p className="text-navy-500 text-sm leading-relaxed mb-6">
                 Sessions are available via video call or in-person at our Canada or Mauritius office. Conducted in English or French based on your preference.
               </p>
@@ -191,8 +203,9 @@ export default function PreLandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>FAQ</SectionLabel>
             <h2 className="text-3xl font-bold text-navy-900 tracking-tight mt-3">Frequently asked questions</h2>
@@ -201,7 +214,6 @@ export default function PreLandingPage() {
         </div>
       </section>
 
-      <ConsultationCTA />
     </>
   );
 }

@@ -6,7 +6,7 @@ const values = [
   'Licensed and regulated immigration guidance',
   'Transparent, honest client communication',
   'End-to-end support from application to settlement',
-  'Deep understanding of the Mauritius–Canada journey',
+  'Deep understanding of the international Canada immigration journey',
   'English and French bilingual service',
 ];
 
@@ -65,7 +65,7 @@ export default function AboutPreview() {
               system, because we understand the journey personally.
             </p>
             <p className="text-navy-500 text-sm leading-relaxed mb-6">
-              With a presence in both Canada and Mauritius, we provide culturally informed,
+              With offices in Canada and an international presence, we provide culturally informed,
               bilingual, and professionally regulated support for every stage of your immigration
               and settlement journey.
             </p>

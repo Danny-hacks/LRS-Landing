@@ -1,25 +1,32 @@
-import { GraduationCap, Zap, Globe, Award, CheckCircle, Clock } from 'lucide-react';
+import { GraduationCap, Zap, Globe, Award, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageHero from '../../components/PageHero';
 import FAQAccordion from '../../components/FAQAccordion';
-import ConsultationCTA from '../../components/ConsultationCTA';
 import SectionLabel from '../../components/SectionLabel';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const highlights = [
-  { icon: Zap, title: 'Student Direct Stream (SDS)', description: 'Mauritius is eligible for SDS — faster processing (≈20 business days) with a streamlined document set including IELTS and a GIC.' },
-  { icon: GraduationCap, title: 'Designated Learning Institutions', description: 'You must enrol at a IRCC-approved DLI. LRS guides you on which institutions qualify and how to obtain your acceptance letter.' },
-  { icon: Globe, title: 'Work During Studies', description: 'Most students can work up to 24 hours per week during academic sessions and full-time during scheduled breaks. Conditions apply — LRS advises on current IRCC rules.' },
+  { icon: Zap, title: 'Student Direct Stream (SDS)', description: 'Students from eligible countries qualify for SDS — faster processing (≈20 business days) with a streamlined document set including IELTS and a GIC.' },
+  { icon: GraduationCap, title: 'Designated Learning Institutions', description: 'You must enrol at an IRCC-approved DLI. LRS guides you on which institutions qualify and how to obtain your acceptance letter.' },
+  { icon: Globe, title: 'Work During Studies', description: 'Most students can work up to 24 hours per week during academic sessions and full-time during scheduled breaks. LRS advises on current IRCC rules.' },
   { icon: Award, title: 'Post-Graduation Work Permit', description: 'After graduating from an eligible DLI, most students qualify for a PGWP valid up to 3 years — a major pathway to Canadian work experience and PR.' },
 ];
 
 const processSteps = [
-  { title: 'Choose a Designated Learning Institution', description: 'Research and apply to a IRCC-approved DLI. LRS advises on program selection, DLI eligibility, and what makes a strong application.' },
+  { title: 'Choose a Designated Learning Institution', description: 'Research and apply to an IRCC-approved DLI. LRS advises on program selection, DLI eligibility, and what makes a strong application.' },
   { title: 'Receive Letter of Acceptance', description: 'Once accepted, your DLI sends a Letter of Acceptance (LOA) — a required document for your study permit application.' },
   { title: 'Gather Financial Documents', description: 'You must prove you can cover tuition + living expenses (~CAD $10,000/year). SDS applicants need a GIC of $10,000 CAD from an approved financial institution.' },
   { title: 'Apply for Study Permit', description: 'LRS prepares and submits your study permit application — SDS or regular stream — with a complete and accurate package.' },
   { title: 'Biometrics & Medical Exam', description: 'Biometrics are required for most applicants. A medical exam may be required depending on your intended program length and country of origin.' },
   { title: 'Receive PAL / Port of Entry', description: 'You receive a Port of Entry (PoE) Letter of Introduction or a study permit stamped on arrival. LRS briefs you on what to expect at the Canadian border.' },
+];
+
+const keyRequirements = [
+  { label: 'Acceptance from a DLI', required: true },
+  { label: 'Proof of funds (tuition + living)', required: true },
+  { label: 'GIC — $10,000 CAD (SDS only)', required: true },
+  { label: 'IELTS / CELPIP / TEF score', required: true },
+  { label: 'Police certificate', required: false },
+  { label: 'Medical exam (if required)', required: false },
 ];
 
 const included = [
@@ -40,7 +47,7 @@ const faqs = [
   },
   {
     q: 'Can I work in Canada on a study permit?',
-    a: 'Most international students can work up to 24 hours per week during academic sessions and full-time during scheduled breaks (summer, winter holidays). Off-campus work is permitted for most programs without a separate work permit. LRS confirms the current conditions for your specific situation.',
+    a: 'Most international students can work up to 24 hours per week during academic sessions and full-time during scheduled breaks. Off-campus work is permitted for most programs without a separate work permit. LRS confirms the current conditions for your specific situation.',
   },
   {
     q: 'What is a GIC and do I need one?',
@@ -51,30 +58,27 @@ const faqs = [
     a: 'PGWP duration matches your program length: programs under 8 months don\'t qualify; programs 8 months to under 2 years get a permit equal to the program length; programs 2 years or longer receive a 3-year PGWP. LRS plans your program choice around the best PGWP outcome.',
   },
   {
-    q: 'What is the Student Direct Stream (SDS) and is Mauritius eligible?',
-    a: 'SDS is a streamlined study permit stream for students from eligible countries, offering faster processing (~20 business days). Mauritius is an SDS-eligible country. SDS requires an upfront IELTS score, a GIC, and paid first-year tuition. LRS determines if SDS is the right approach for your situation.',
+    q: 'What is the Student Direct Stream (SDS) and is my country eligible?',
+    a: 'SDS is a streamlined study permit stream for students from eligible countries, offering faster processing (~20 business days). SDS requires an upfront IELTS score, a GIC, and paid first-year tuition. LRS confirms your country\'s eligibility and determines if SDS is the right approach for your situation.',
   },
 ];
 
 export default function StudyPermitsPage() {
-  const [ref1, v1] = useScrollReveal();
-  const [ref2, v2] = useScrollReveal();
-
   return (
     <>
       <PageHero
-        breadcrumb={[{ label: 'Immigration', href: '/#services' }, { label: 'Study Permits' }]}
         badge="Immigration Services"
-        title="Study Permits for Canada"
-        subtitle="From choosing a Designated Learning Institution to submitting a complete SDS or regular study permit application — LRS manages the full process and plans your post-graduation pathway."
-        ctaLabel="Check My Eligibility"
-        ctaHref="/#assessment"
+        title="Study Permits"
+        titleAccent="for Canada"
+        image="/canada-img7.jpg"
+        compact
       />
 
       {/* Overview */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref1} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-[1fr_280px] gap-10 lg:gap-16 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">Overview</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
@@ -84,38 +88,40 @@ export default function StudyPermitsPage() {
                 A study permit is required for most foreign nationals studying in Canada for longer than 6 months. You must have an accepted offer from a Designated Learning Institution (DLI) before applying.
               </p>
               <p className="text-navy-500 leading-relaxed mb-4">
-                As a Mauritius citizen, you may be eligible for the Student Direct Stream (SDS) — a faster, more streamlined application track available to students from select countries who can submit a complete document set upfront.
+                Depending on your country of origin, you may be eligible for the Student Direct Stream (SDS) — a faster track available to select countries who can submit a complete document set upfront.
               </p>
-              <p className="text-navy-500 leading-relaxed">
+              <p className="text-navy-500 leading-relaxed mb-8">
                 Beyond the study permit, LRS plans your complete post-graduation journey: the PGWP, Canadian work experience, and the most suitable pathway to permanent residency.
               </p>
+              <div className="bg-navy-50 rounded-xl border border-navy-100 p-5">
+                <p className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-3">Key Requirements</p>
+                <div className="space-y-2">
+                  {keyRequirements.map(({ label, required }) => (
+                    <div key={label} className="flex items-center gap-2.5">
+                      <span className={`w-2 h-2 rounded-full flex-shrink-0 ${required ? 'bg-canada-red' : 'bg-navy-300'}`} />
+                      <span className="text-navy-600 text-sm">{label}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-navy-400 text-[10px] mt-3">Red = required for all. Grey = may apply.</p>
+              </div>
             </div>
-            <div className="bg-navy-50 rounded-2xl p-6 border border-navy-100">
-              <h3 className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-4">Key Requirements</h3>
-              <ul className="space-y-3">
-                {[
-                  { label: 'Acceptance from DLI', required: true },
-                  { label: 'Proof of funds (tuition + living)', required: true },
-                  { label: 'GIC — $10,000 CAD (SDS)', required: true },
-                  { label: 'IELTS / CELPIP / TEF', required: true },
-                  { label: 'Police certificate', required: false },
-                  { label: 'Medical exam (if required)', required: false },
-                ].map(({ label, required }) => (
-                  <li key={label} className="flex items-center gap-2">
-                    <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${required ? 'bg-canada-red' : 'bg-navy-300'}`} />
-                    <span className="text-navy-600 text-xs">{label}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-navy-400 text-[10px] mt-4">Red dot = required for all applicants. Grey = may apply.</p>
+            <div className="relative h-80 sm:h-[520px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img8.jpg" alt="Study in Canada" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/65 via-navy-900/10 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Study now, stay permanently</p>
+                <p className="text-navy-500 text-xs mt-0.5">LRS confirms your country's SDS eligibility</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Highlights */}
-      <section className="py-20 lg:py-28 bg-warm-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>Key Advantages</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mt-3">What studying in Canada means for you</h2>
@@ -135,56 +141,66 @@ export default function StudyPermitsPage() {
       </section>
 
       {/* Process */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref2} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">The Process</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
                 From acceptance to arrival
               </h2>
-              <p className="text-navy-500 leading-relaxed">
+              <p className="text-navy-500 leading-relaxed mb-8">
                 LRS manages the entire study permit process — and starts planning your post-graduation pathway from day one.
               </p>
+              <div className="space-y-5">
+                {processSteps.map((step, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-canada-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <h3 className="text-navy-900 font-semibold text-sm mb-1">{step.title}</h3>
+                      <p className="text-navy-500 text-xs leading-relaxed">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="space-y-5">
-              {processSteps.map((step, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="w-8 h-8 rounded-full bg-canada-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    {i + 1}
-                  </div>
-                  <div>
-                    <h3 className="text-navy-900 font-semibold text-sm mb-1">{step.title}</h3>
-                    <p className="text-navy-500 text-xs leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="relative h-80 sm:h-[580px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img2.jpg" alt="Canadian campus and study life" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/65 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Arrive informed. Graduate stronger.</p>
+                <p className="text-navy-500 text-xs mt-0.5">PGWP: up to 3 years of Canadian work experience</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What We Handle */}
-      <section className="py-20 lg:py-28 bg-navy-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* What LRS Handles — dark section */}
+      <section className="relative py-20 lg:py-28 bg-navy-950 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-dark.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <SectionLabel align="left">What LRS Handles</SectionLabel>
-              <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">Study permit to PR — a complete plan.</h2>
-              <p className="text-navy-500 leading-relaxed mb-8">
+              <p className="text-canada-red text-xs font-bold uppercase tracking-widest mb-3">What LRS Handles</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-5">Study permit to PR — a complete plan.</h2>
+              <p className="text-white/60 text-sm leading-relaxed mb-8">
                 LRS doesn't just file your study permit. We map out the full journey: program selection, study permit, PGWP, and the PR pathway that fits your career goals.
               </p>
               <div className="grid sm:grid-cols-2 gap-y-3 gap-x-6">
                 {included.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle size={14} className="text-canada-red flex-shrink-0 mt-0.5" />
-                    <span className="text-navy-700 text-sm">{item}</span>
+                    <span className="text-white/80 text-sm">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-2xl p-8 border border-navy-100 shadow-sm">
-              <h3 className="text-navy-900 font-semibold mb-2">Ready to study in Canada?</h3>
+            <div className="bg-white rounded-2xl p-8 shadow-card">
+              <h3 className="text-navy-900 font-semibold text-lg mb-2">Ready to study in Canada?</h3>
               <p className="text-navy-500 text-sm leading-relaxed mb-6">
                 Start with our free assessment. LRS will confirm your SDS eligibility, review your DLI options, and outline the complete study-to-PR pathway.
               </p>
@@ -200,8 +216,9 @@ export default function StudyPermitsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>FAQ</SectionLabel>
             <h2 className="text-3xl font-bold text-navy-900 tracking-tight mt-3">Frequently asked questions</h2>
@@ -210,7 +227,6 @@ export default function StudyPermitsPage() {
         </div>
       </section>
 
-      <ConsultationCTA />
     </>
   );
 }

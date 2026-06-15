@@ -2,9 +2,14 @@ import { Award, MapPin, Users, Shield, Clock, FileCheck, CheckCircle } from 'luc
 import { Link } from 'react-router-dom';
 import PageHero from '../../components/PageHero';
 import FAQAccordion from '../../components/FAQAccordion';
-import ConsultationCTA from '../../components/ConsultationCTA';
 import SectionLabel from '../../components/SectionLabel';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
+
+const quickFacts = [
+  { icon: Clock, label: 'Processing Time', sub: '6–24 months by stream' },
+  { icon: FileCheck, label: 'Application Type', sub: 'Online IRCC portal' },
+  { icon: Users, label: 'Includes Family', sub: 'Spouse & dependents' },
+  { icon: Shield, label: 'Path to Citizenship', sub: '3 of 5 years as PR' },
+];
 
 const pathways = [
   { icon: Award, title: 'Express Entry', description: 'Federal Skilled Worker, Skilled Trades, and Canadian Experience Class — ranked by CRS score with regular draws.' },
@@ -24,7 +29,7 @@ const processSteps = [
 
 const included = [
   'Full eligibility assessment across all PR pathways',
-  'CRS score calculation and optimization strategy (Express Entry)',
+  'CRS score calculation and optimization strategy',
   'Complete application form preparation and review',
   'Document checklist and sourcing guidance',
   'Correspondence with IRCC on your behalf',
@@ -57,24 +62,21 @@ const faqs = [
 ];
 
 export default function PermanentResidencyPage() {
-  const [overviewRef, overviewVisible] = useScrollReveal();
-  const [processRef, processVisible]   = useScrollReveal();
-
   return (
     <>
       <PageHero
-        breadcrumb={[{ label: 'Immigration', href: '/#services' }, { label: 'Permanent Residency' }]}
         badge="Immigration Services"
-        title="Permanent Residency in Canada"
-        subtitle="Build your future in Canada with a pathway to permanent resident status — the right to live, work, and study anywhere in the country, permanently."
-        ctaLabel="Book a Consultation"
-        ctaHref="/#contact"
+        title="Permanent Residency"
+        titleAccent="in Canada"
+        image="/canada-img3.jpg"
+        compact
       />
 
       {/* Overview */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div ref={overviewRef} className={`reveal grid lg:grid-cols-[1fr_300px] gap-10 lg:gap-16 items-start`}>
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">Overview</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
@@ -83,39 +85,35 @@ export default function PermanentResidencyPage() {
               <p className="text-navy-500 leading-relaxed mb-4">
                 Permanent Residency (PR) gives you the right to live, work, and study anywhere in Canada — indefinitely. As a PR holder, you access most social benefits including healthcare, education, and social services available to citizens.
               </p>
-              <p className="text-navy-500 leading-relaxed mb-4">
-                You maintain PR status as long as you spend at least 730 days in Canada every 5 years. After meeting residency requirements, most PR holders become eligible for Canadian citizenship.
-              </p>
-              <p className="text-navy-500 leading-relaxed">
+              <p className="text-navy-500 leading-relaxed mb-8">
                 Canada offers multiple PR pathways. LRS assesses your full profile and identifies the most viable and strategic route — whether that's Express Entry, a Provincial Nominee Program, or another stream entirely.
               </p>
-            </div>
-            <div className="bg-navy-50 rounded-2xl p-6 border border-navy-100">
-              <h3 className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-4">Quick Facts</h3>
-              <ul className="space-y-4">
-                {[
-                  { icon: Clock, label: 'Processing Time', sub: '6–24 months depending on stream' },
-                  { icon: FileCheck, label: 'Application Type', sub: 'Online (IRCC portal) or paper' },
-                  { icon: Users, label: 'Includes Family', sub: 'Spouse & dependent children' },
-                  { icon: Shield, label: 'Path to Citizenship', sub: '3 of 5 years after PR grant' },
-                ].map(({ icon: Icon, label, sub }) => (
-                  <li key={label} className="flex items-start gap-3">
-                    <Icon size={14} className="text-canada-red mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="text-navy-700 font-medium text-sm">{label}</p>
-                      <p className="text-navy-500 text-xs mt-0.5">{sub}</p>
-                    </div>
-                  </li>
+              <div className="grid grid-cols-2 gap-3">
+                {quickFacts.map(({ icon: Icon, label, sub }) => (
+                  <div key={label} className="bg-navy-50 rounded-xl p-4 border border-navy-100">
+                    <Icon size={14} className="text-canada-red mb-2" />
+                    <p className="text-navy-900 font-semibold text-sm">{label}</p>
+                    <p className="text-navy-500 text-xs mt-0.5">{sub}</p>
+                  </div>
                 ))}
-              </ul>
+              </div>
+            </div>
+            <div className="relative h-80 sm:h-[480px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img4.jpg" alt="Canada — permanent residency" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Permanent Resident Status</p>
+                <p className="text-navy-500 text-xs mt-0.5">The right to live and work anywhere in Canada</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Pathways */}
-      <section className="py-20 lg:py-28 bg-warm-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>Pathways to PR</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mt-3">Which pathway is right for you?</h2>
@@ -138,57 +136,67 @@ export default function PermanentResidencyPage() {
       </section>
 
       {/* Process */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={processRef} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">The Process</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
                 How LRS guides you to PR
               </h2>
-              <p className="text-navy-500 leading-relaxed">
+              <p className="text-navy-500 leading-relaxed mb-8">
                 From initial assessment through to your Confirmation of Permanent Residence,
                 LRS manages every stage with precision and care.
               </p>
+              <div className="space-y-5">
+                {processSteps.map((step, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-canada-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <h3 className="text-navy-900 font-semibold text-sm mb-1">{step.title}</h3>
+                      <p className="text-navy-500 text-xs leading-relaxed">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="space-y-6">
-              {processSteps.map((step, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="w-8 h-8 rounded-full bg-canada-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    {i + 1}
-                  </div>
-                  <div>
-                    <h3 className="text-navy-900 font-semibold text-sm mb-1">{step.title}</h3>
-                    <p className="text-navy-500 text-xs leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="relative h-80 sm:h-[560px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img3.jpg" alt="Canada immigration process" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/65 via-navy-900/10 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Your COPR — the gateway to permanent life</p>
+                <p className="text-navy-500 text-xs mt-0.5">Express Entry processed in 6–8 months</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What We Handle */}
-      <section className="py-20 lg:py-28 bg-navy-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* What LRS Handles — dark section */}
+      <section className="relative py-20 lg:py-28 bg-navy-950 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-dark.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <SectionLabel align="left">What LRS Handles</SectionLabel>
-              <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">Everything. Start to finish.</h2>
-              <p className="text-navy-500 leading-relaxed mb-8">
+              <p className="text-canada-red text-xs font-bold uppercase tracking-widest mb-3">What LRS Handles</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-5">Everything. Start to finish.</h2>
+              <p className="text-white/60 text-sm leading-relaxed mb-8">
                 You don't need to navigate IRCC's complex requirements alone. LRS handles the full process — preparation, submission, and follow-through.
               </p>
               <div className="grid sm:grid-cols-2 gap-y-3 gap-x-6">
                 {included.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle size={14} className="text-canada-red flex-shrink-0 mt-0.5" />
-                    <span className="text-navy-700 text-sm">{item}</span>
+                    <span className="text-white/80 text-sm">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-2xl p-8 border border-navy-100 shadow-sm">
-              <h3 className="text-navy-900 font-semibold mb-2">Ready to explore your PR pathway?</h3>
+            <div className="bg-white rounded-2xl p-8 shadow-card">
+              <h3 className="text-navy-900 font-semibold text-lg mb-2">Ready to explore your PR pathway?</h3>
               <p className="text-navy-500 text-sm leading-relaxed mb-6">
                 Start with a free eligibility assessment. LRS reviews your profile and recommends the strongest pathway within 2 business days.
               </p>
@@ -210,8 +218,9 @@ export default function PermanentResidencyPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>FAQ</SectionLabel>
             <h2 className="text-3xl font-bold text-navy-900 tracking-tight mt-3">Frequently asked questions</h2>
@@ -220,7 +229,6 @@ export default function PermanentResidencyPage() {
         </div>
       </section>
 
-      <ConsultationCTA />
     </>
   );
 }

@@ -7,7 +7,7 @@ const navLinks = [
   { label: 'Home',        href: '/' },
   { label: 'Immigration', href: '/#services',   dropdown: immigrationServices },
   { label: 'Settlement',  href: '/#settlement', dropdown: settlementServices },
-  { label: 'Assessment',  href: '/#assessment' },
+  { label: 'Assessment',  href: '/assessment' },
   { label: 'About Us',    href: '/about' },
   { label: 'Contact',     href: '/#contact' },
 ];

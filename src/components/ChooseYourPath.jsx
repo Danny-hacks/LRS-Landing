@@ -10,7 +10,7 @@ const paths = [
     icon: Plane,
     label: 'Immigration Services',
     title: "I'm moving to Canada",
-    description: 'Applying from Mauritius for permanent residency, a work permit, study permit, or family sponsorship.',
+    description: 'Applying from abroad for permanent residency, a work permit, study permit, or family sponsorship.',
     items: ['Permanent Residency', 'Express Entry / PNPs', 'Work Permits', 'Study Permits', 'Family Sponsorship'],
     ctaLabel: 'Explore Immigration',
     ctaHref: '#services',

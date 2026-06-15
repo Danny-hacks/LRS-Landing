@@ -36,7 +36,7 @@ export default function Hero() {
           {/* Subtext */}
           <p className="hero-3 text-white/75 text-lg leading-relaxed mb-7 max-w-lg">
             Licensed immigration and settlement support for individuals and families —
-            from Mauritius to your new home in Canada.
+            from your home country to your new life in Canada.
           </p>
 
           {/* RCIC / CRIC Credential Badge */}

@@ -1,10 +1,8 @@
-import { Briefcase, Globe, Award, TrendingUp, CheckCircle, FileText } from 'lucide-react';
+import { Briefcase, Globe, Award, CheckCircle, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageHero from '../../components/PageHero';
 import FAQAccordion from '../../components/FAQAccordion';
-import ConsultationCTA from '../../components/ConsultationCTA';
 import SectionLabel from '../../components/SectionLabel';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const keyTopics = [
   { icon: FileText, title: 'Canadian Resume Format', description: 'No photo, no date of birth, no marital status. Action verbs, quantified achievements, and a clean 1–2 page format that meets Canadian employer expectations.' },
@@ -61,66 +59,69 @@ const faqs = [
     a: 'Canadian employers typically request 2–3 professional references and will call them. Reference letters alone are usually not sufficient. Ensure your references are people who can speak to your work performance and are reachable by phone. LRS prepares you on how to brief your references.',
   },
   {
-    q: 'How does the Canadian interview process differ from Mauritius?',
+    q: 'How does the Canadian interview process differ from other countries?',
     a: 'Canadian interviews are typically structured: behaviour-based questions (STAR method — Situation, Task, Action, Result), a focus on past performance as a predictor of future performance, and expect to ask questions at the end. LRS provides interview coaching for the Canadian style, including common questions in your sector.',
   },
 ];
 
 export default function JobSearchPage() {
-  const [ref1, v1] = useScrollReveal();
-  const [ref2, v2] = useScrollReveal();
-
   return (
     <>
       <PageHero
-        breadcrumb={[{ label: 'Settlement', href: '/#settlement' }, { label: 'Job Search & Resume Support' }]}
         badge="Settlement Services"
-        title="Job Search & Resume Support for Canada"
-        subtitle="Canadian employers expect a specific resume format, a strong LinkedIn presence, and a different job search approach. LRS prepares you to compete in the Canadian job market from day one."
-        ctaLabel="Book a Consultation"
-        ctaHref="/#contact"
+        title="Job Search &"
+        titleAccent="Resume Support for Canada"
+        image="/canada-img5.jpg"
+        compact
       />
 
       {/* Overview */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref1} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-[1fr_280px] gap-10 lg:gap-16 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">Overview</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
                 Enter the Canadian job market with confidence
               </h2>
               <p className="text-navy-500 leading-relaxed mb-4">
-                The Canadian job market has specific expectations that differ from what many newcomers are used to. A resume that works in Mauritius or Europe may not work the same way in Canada. LinkedIn is not optional — it's a primary tool that Canadian recruiters use daily.
+                The Canadian job market has specific expectations that differ from what many newcomers are used to. A resume that works in your home country may not work the same way in Canada. LinkedIn is not optional — it's a primary tool that Canadian recruiters use daily.
               </p>
-              <p className="text-navy-500 leading-relaxed mb-4">
-                LRS's career readiness service goes beyond a resume review. We cover the full job search ecosystem: where to apply, how to network, what interviewers look for, how references work, and how to navigate credentialing requirements for regulated professions.
+              <p className="text-navy-500 leading-relaxed mb-8">
+                LRS's career readiness service covers the full job search ecosystem: where to apply, how to network, what interviewers look for, how references work, and how to navigate credentialing requirements for regulated professions.
               </p>
-              <p className="text-navy-500 leading-relaxed">
-                Whether you're landing your first Canadian job or transitioning from a work permit to a professional career as a PR holder, LRS positions you for success in your sector.
-              </p>
-            </div>
-            <div className="bg-navy-50 rounded-2xl p-6 border border-navy-100">
-              <h3 className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-4">Key Job Boards</h3>
-              <ul className="space-y-3">
-                {jobBoards.map(({ name, note }) => (
-                  <li key={name} className="flex items-start gap-2">
-                    <CheckCircle size={12} className="text-canada-red mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="text-navy-700 font-medium text-sm">{name}</p>
-                      <p className="text-navy-500 text-xs leading-snug">{note}</p>
+              <div className="bg-navy-50 rounded-xl border border-navy-100 p-5">
+                <p className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-3">Key Job Boards</p>
+                <div className="space-y-3">
+                  {jobBoards.map(({ name, note }) => (
+                    <div key={name} className="flex items-start gap-2.5">
+                      <CheckCircle size={12} className="text-canada-red flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className="text-navy-900 font-semibold text-sm">{name}</span>
+                        <p className="text-navy-500 text-xs mt-0.5">{note}</p>
+                      </div>
                     </div>
-                  </li>
-                ))}
-              </ul>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="relative h-80 sm:h-[520px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img3.jpg" alt="Working in Canada — career success" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/65 via-navy-900/10 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Land your first Canadian role</p>
+                <p className="text-navy-500 text-xs mt-0.5">LRS prepares your resume, LinkedIn, and interview skills</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Key Topics */}
-      <section className="py-20 lg:py-28 bg-warm-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>What We Cover</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mt-3">The four pillars of Canadian job readiness</h2>
@@ -140,9 +141,10 @@ export default function JobSearchPage() {
       </section>
 
       {/* Resume Differences */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref2} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">Canadian Resume Format</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
@@ -160,35 +162,55 @@ export default function JobSearchPage() {
                 ))}
               </div>
             </div>
-            <div>
-              <div className="bg-navy-50 rounded-2xl p-8 border border-navy-100 mb-6">
-                <h3 className="text-navy-900 font-semibold mb-3">What LRS provides</h3>
-                <div className="space-y-3">
-                  {included.map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <CheckCircle size={13} className="text-canada-red flex-shrink-0 mt-0.5" />
-                      <span className="text-navy-700 text-sm">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-                <h3 className="text-navy-900 font-semibold mb-2">Ready to start your Canadian job search?</h3>
-                <p className="text-navy-500 text-sm leading-relaxed mb-5">
-                  Book a career readiness session with LRS. We'll review your resume, optimize your LinkedIn, and build a job search strategy for your sector.
-                </p>
-                <Link to="/#contact" className="inline-flex items-center justify-center w-full px-6 py-3.5 rounded-lg bg-canada-red text-white font-semibold text-sm hover:bg-canada-red-dark transition-colors btn-primary">
-                  Book a Session
-                </Link>
+            <div className="relative h-80 sm:h-[520px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img7.jpg" alt="Professional career success in Canada" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/65 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Your Canadian career starts here</p>
+                <p className="text-navy-500 text-xs mt-0.5">LRS rewrites your resume to Canadian standards</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* What LRS Provides — dark section */}
+      <section className="relative py-20 lg:py-28 bg-navy-950 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-dark.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <p className="text-canada-red text-xs font-bold uppercase tracking-widest mb-3">What LRS Provides</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-5">Career readiness, start to finish.</h2>
+              <p className="text-white/60 text-sm leading-relaxed mb-8">
+                Whether you're landing your first Canadian job or transitioning from a work permit to a professional career as a PR holder, LRS positions you for success in your sector.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-y-3 gap-x-6">
+                {included.map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle size={14} className="text-canada-red flex-shrink-0 mt-0.5" />
+                    <span className="text-white/80 text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl p-8 shadow-card">
+              <h3 className="text-navy-900 font-semibold text-lg mb-2">Ready to start your Canadian job search?</h3>
+              <p className="text-navy-500 text-sm leading-relaxed mb-6">
+                Book a career readiness session with LRS. We'll review your resume, optimize your LinkedIn, and build a job search strategy for your sector.
+              </p>
+              <Link to="/#contact" className="inline-flex items-center justify-center w-full px-6 py-3.5 rounded-lg bg-canada-red text-white font-semibold text-sm hover:bg-canada-red-dark transition-colors btn-primary">
+                Book a Session
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
-      <section className="py-20 lg:py-28 bg-warm-50">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>FAQ</SectionLabel>
             <h2 className="text-3xl font-bold text-navy-900 tracking-tight mt-3">Frequently asked questions</h2>
@@ -197,7 +219,6 @@ export default function JobSearchPage() {
         </div>
       </section>
 
-      <ConsultationCTA />
     </>
   );
 }

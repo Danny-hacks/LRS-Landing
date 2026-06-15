@@ -15,6 +15,7 @@ import PreLandingPage          from './pages/settlement/PreLandingPage';
 import HousingPage             from './pages/settlement/HousingPage';
 import SinBankingPage          from './pages/settlement/SinBankingPage';
 import JobSearchPage           from './pages/settlement/JobSearchPage';
+import AssessmentPage          from './pages/AssessmentPage';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -42,6 +43,7 @@ function AppRoutes() {
           <Route path="/settlement/housing"            element={<HousingPage />} />
           <Route path="/settlement/sin-health-banking" element={<SinBankingPage />} />
           <Route path="/settlement/job-search-resume"  element={<JobSearchPage />} />
+          <Route path="/assessment"                    element={<AssessmentPage />} />
         </Routes>
       </main>
       <Footer />

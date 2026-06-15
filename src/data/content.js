@@ -109,8 +109,8 @@ export const whyCards = [
   },
   {
     icon: 'Globe',
-    title: 'Canada + Mauritius Support',
-    description: 'With presence in both Canada and Mauritius, we provide culturally aware, bilingual support across time zones.',
+    title: 'Canada + International Support',
+    description: 'With offices in Canada and an international presence, we provide culturally aware, bilingual support across time zones.',
   },
   {
     icon: 'Route',
@@ -139,28 +139,28 @@ export const testimonials = [
     initials: 'A.R.',
     service: 'Family Sponsorship',
     quote: 'LRS guided us through every document, every form, every step. The process felt manageable rather than overwhelming. We are now reunited as a family in Canada.',
-    location: 'Port Louis, Mauritius → Montreal, QC',
+    location: 'Lagos, Nigeria → Montreal, QC',
     rating: 5,
   },
   {
     initials: 'P.N.',
     service: 'Study Permit Planning',
     quote: 'I had no idea where to start. LRS mapped out my pathway, reviewed my admission documents, and supported my application from beginning to submission.',
-    location: 'Mauritius → Toronto, ON',
+    location: 'Mumbai, India → Toronto, ON',
     rating: 5,
   },
   {
     initials: 'S.M.',
     service: 'Express Entry & PNP',
     quote: 'The team helped me understand my CRS score, identify the right provincial stream, and prepare a strong application. The guidance was clear and professional throughout.',
-    location: 'Mauritius → Ottawa, ON',
+    location: 'Manila, Philippines → Ottawa, ON',
     rating: 5,
   },
   {
     initials: 'D.F.',
     service: 'Pre-Landing Settlement',
     quote: 'Before landing, LRS prepared us with an orientation covering housing, healthcare, SIN registration, and banking. We arrived knowing exactly what to do first.',
-    location: 'Mauritius → Calgary, AB',
+    location: 'Port Louis, Mauritius → Calgary, AB',
     rating: 5,
   },
 ];

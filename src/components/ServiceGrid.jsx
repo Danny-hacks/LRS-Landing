@@ -1,7 +1,5 @@
-// ─── Services: Three service columns with image headers ───────────────────────
-// WordPress note: Thrive 3-column section on warm-50 bg — each col is an image+icon card
-// REPLACE: Swap card images with on-brand Canada/immigration photography
 import { FileText, Home, MessageCircle, Check, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const columns = [
@@ -12,13 +10,13 @@ const columns = [
     title: 'Immigration Pathways',
     description: 'Expert guidance on every federal and provincial pathway to Canada, tailored to your personal profile.',
     services: [
-      'Permanent Residency',
-      'Express Entry / PNPs',
-      'Work Permits',
-      'Study Permits',
-      'Family Sponsorship',
+      { label: 'Permanent Residency', href: '/services/permanent-residency' },
+      { label: 'Express Entry / PNPs', href: '/services/express-entry' },
+      { label: 'Work Permits', href: '/services/work-permits' },
+      { label: 'Study Permits', href: '/services/study-permits' },
+      { label: 'Family Sponsorship', href: '/services/family-sponsorship' },
     ],
-    href: '#contact',
+    ctaHref: '/services/permanent-residency',
     cta: 'Explore Immigration',
   },
   {
@@ -28,13 +26,13 @@ const columns = [
     title: 'Settlement Support',
     description: 'From pre-landing orientation to employment readiness, we support every step of your arrival in Canada.',
     services: [
-      'Pre-Landing Orientation',
-      'Housing Assistance',
-      'SIN, Health Card & Banking',
-      'Job Search & Resume Support',
-      'Community Integration',
+      { label: 'Pre-Landing Orientation', href: '/settlement/pre-landing' },
+      { label: 'Housing & Accommodation', href: '/settlement/housing' },
+      { label: 'SIN, Health Card & Banking', href: '/settlement/sin-health-banking' },
+      { label: 'Job Search & Resume Support', href: '/settlement/job-search-resume' },
+      { label: 'Community Integration', href: '/settlement/pre-landing' },
     ],
-    href: '#contact',
+    ctaHref: '/settlement/pre-landing',
     cta: 'Explore Settlement',
   },
   {
@@ -44,13 +42,13 @@ const columns = [
     title: 'Consultation & Planning',
     description: 'Start with a licensed consultation to understand your options and build a clear path forward.',
     services: [
-      'Eligibility Review',
-      'Document Guidance',
-      'Strategy Session',
-      'Application Planning',
-      'Next-Step Roadmap',
+      { label: 'Eligibility Review', href: '/assessment' },
+      { label: 'Document Guidance', href: '/assessment' },
+      { label: 'Strategy Session', href: '/#contact' },
+      { label: 'Application Planning', href: '/assessment' },
+      { label: 'Next-Step Roadmap', href: '/about' },
     ],
-    href: '#assessment',
+    ctaHref: '/assessment',
     cta: 'Start Assessment',
   },
 ];
@@ -85,20 +83,25 @@ function ServiceColumn({ col, index }) {
         <p className="text-navy-500 text-sm leading-relaxed mb-6">{col.description}</p>
 
         <ul className="space-y-2.5 mb-8 flex-1">
-          {col.services.map((s) => (
-            <li key={s} className="flex items-start gap-2.5 text-sm text-navy-600">
-              <Check size={14} className="text-canada-red mt-0.5 flex-shrink-0" />
-              {s}
+          {col.services.map(({ label, href }) => (
+            <li key={label}>
+              <Link
+                to={href}
+                className="flex items-start gap-2.5 text-sm text-navy-600 hover:text-canada-red transition-colors group"
+              >
+                <Check size={14} className="text-canada-red mt-0.5 flex-shrink-0" />
+                <span className="group-hover:underline underline-offset-2">{label}</span>
+              </Link>
             </li>
           ))}
         </ul>
 
-        <a
-          href={col.href}
+        <Link
+          to={col.ctaHref}
           className="inline-flex items-center gap-1.5 text-canada-red text-sm font-semibold group hover:gap-2.5 transition-all"
         >
           {col.cta} <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-        </a>
+        </Link>
       </div>
     </div>
   );

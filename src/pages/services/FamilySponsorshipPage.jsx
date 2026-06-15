@@ -1,10 +1,8 @@
-import { Heart, Users, Home, Shield, CheckCircle, Clock } from 'lucide-react';
+import { Heart, Users, Home, Shield, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageHero from '../../components/PageHero';
 import FAQAccordion from '../../components/FAQAccordion';
-import ConsultationCTA from '../../components/ConsultationCTA';
 import SectionLabel from '../../components/SectionLabel';
-import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const categories = [
   { icon: Heart, title: 'Spouse / Common-Law / Conjugal Partner', description: 'Outland (outside Canada) or Inland (partner already in Canada) processing. Inland applicants may receive an Open Work Permit while waiting.' },
@@ -66,24 +64,21 @@ const faqs = [
 ];
 
 export default function FamilySponsorshipPage() {
-  const [ref1, v1] = useScrollReveal();
-  const [ref2, v2] = useScrollReveal();
-
   return (
     <>
       <PageHero
-        breadcrumb={[{ label: 'Immigration', href: '/#services' }, { label: 'Family Sponsorship' }]}
         badge="Immigration Services"
-        title="Family Sponsorship to Canada"
-        subtitle="Reunite with the people who matter most. LRS manages every stage of the sponsorship process — from eligibility to your family's first day in Canada together."
-        ctaLabel="Book a Consultation"
-        ctaHref="/#contact"
+        title="Family Sponsorship"
+        titleAccent="to Canada"
+        image="/canada-img2.jpg"
+        compact
       />
 
       {/* Overview */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref1} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-[1fr_300px] gap-10 lg:gap-16 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">Overview</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
@@ -92,31 +87,37 @@ export default function FamilySponsorshipPage() {
               <p className="text-navy-500 leading-relaxed mb-4">
                 Canadian citizens and permanent residents can sponsor close family members to come to Canada as permanent residents. The Family Class sponsorship program is built on the principle of family reunification.
               </p>
-              <p className="text-navy-500 leading-relaxed mb-4">
-                The sponsorship process has two stages: first, IRCC assesses the sponsor's eligibility and willingness to support the sponsored person. Second, the sponsored person's own PR application is assessed.
+              <p className="text-navy-500 leading-relaxed mb-8">
+                LRS manages both stages of the process concurrently, building the strongest possible evidence package for your relationship and ensuring every requirement is met — from income thresholds to relationship documentation.
               </p>
-              <p className="text-navy-500 leading-relaxed">
-                LRS manages both stages concurrently, building the strongest possible evidence package for your relationship and ensuring every requirement is met — from income thresholds to relationship documentation.
-              </p>
+              <div className="bg-navy-50 rounded-xl border border-navy-100 p-5">
+                <p className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-3">Sponsor Requirements</p>
+                <div className="space-y-2">
+                  {sponsorRequirements.map((req, i) => (
+                    <div key={i} className="flex items-start gap-2.5">
+                      <CheckCircle size={12} className="text-canada-red flex-shrink-0 mt-0.5" />
+                      <span className="text-navy-600 text-sm leading-snug">{req}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="bg-navy-50 rounded-2xl p-6 border border-navy-100">
-              <h3 className="text-navy-900 font-semibold text-xs uppercase tracking-wide mb-4">Sponsor Requirements</h3>
-              <ul className="space-y-2.5">
-                {sponsorRequirements.map((req, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <CheckCircle size={12} className="text-canada-red flex-shrink-0 mt-1" />
-                    <span className="text-navy-600 text-xs leading-snug">{req}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="relative h-80 sm:h-[520px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/canada-img3.jpg" alt="Family reunification in Canada" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/65 via-navy-900/10 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Family reunification in Canada</p>
+                <p className="text-navy-500 text-xs mt-0.5">Outland processing: typically 12–18 months</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Categories */}
-      <section className="py-20 lg:py-28 bg-warm-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>Who Can You Sponsor</SectionLabel>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mt-3">Eligible family members</h2>
@@ -136,56 +137,66 @@ export default function FamilySponsorshipPage() {
       </section>
 
       {/* Process */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div ref={ref2} className={`reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <SectionLabel align="left">The Process</SectionLabel>
               <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">
                 How LRS reunites your family
               </h2>
-              <p className="text-navy-500 leading-relaxed">
-                Sponsorship applications are assessed in two stages. LRS manages both simultaneously, building a complete and compelling file from the start.
+              <p className="text-navy-500 leading-relaxed mb-8">
+                Sponsorship applications are assessed in two stages. LRS manages both simultaneously, building a complete and compelling file from the start. Refusals often come down to relationship documentation — LRS ensures yours is airtight.
               </p>
+              <div className="space-y-5">
+                {processSteps.map((step, i) => (
+                  <div key={i} className="flex gap-4">
+                    <div className="w-8 h-8 rounded-full bg-canada-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <h3 className="text-navy-900 font-semibold text-sm mb-1">{step.title}</h3>
+                      <p className="text-navy-500 text-xs leading-relaxed">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="space-y-5">
-              {processSteps.map((step, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="w-8 h-8 rounded-full bg-canada-red text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    {i + 1}
-                  </div>
-                  <div>
-                    <h3 className="text-navy-900 font-semibold text-sm mb-1">{step.title}</h3>
-                    <p className="text-navy-500 text-xs leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="relative h-80 sm:h-[580px] rounded-2xl overflow-hidden shadow-card">
+              <img src="/tall-canada-img.jpg" alt="Canada — a new home for families" className="absolute inset-0 w-full h-full object-cover object-top" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 bg-white rounded-xl px-4 py-3">
+                <p className="text-navy-900 font-semibold text-sm">Canada — a home for your whole family</p>
+                <p className="text-navy-500 text-xs mt-0.5">LRS handles both stages of the sponsorship process</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What We Handle */}
-      <section className="py-20 lg:py-28 bg-navy-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* What LRS Handles — dark section */}
+      <section className="relative py-20 lg:py-28 bg-navy-950 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-dark.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.08 }} aria-hidden="true" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
-              <SectionLabel align="left">What LRS Handles</SectionLabel>
-              <h2 className="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight mb-5">Every document. Every stage.</h2>
-              <p className="text-navy-500 leading-relaxed mb-8">
+              <p className="text-canada-red text-xs font-bold uppercase tracking-widest mb-3">What LRS Handles</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-5">Every document. Every stage.</h2>
+              <p className="text-white/60 text-sm leading-relaxed mb-8">
                 Sponsorship refusals often come down to relationship documentation. LRS builds a comprehensive, compelling evidence package that presents your relationship clearly and thoroughly.
               </p>
               <div className="grid sm:grid-cols-2 gap-y-3 gap-x-6">
                 {included.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle size={14} className="text-canada-red flex-shrink-0 mt-0.5" />
-                    <span className="text-navy-700 text-sm">{item}</span>
+                    <span className="text-white/80 text-sm">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-2xl p-8 border border-navy-100 shadow-sm">
-              <h3 className="text-navy-900 font-semibold mb-2">Ready to start the sponsorship process?</h3>
+            <div className="bg-white rounded-2xl p-8 shadow-card">
+              <h3 className="text-navy-900 font-semibold text-lg mb-2">Ready to start the sponsorship process?</h3>
               <p className="text-navy-500 text-sm leading-relaxed mb-6">
                 Book a consultation with LRS. We'll assess your sponsorship eligibility and outline the complete process and timeline for your family's reunification.
               </p>
@@ -201,8 +212,9 @@ export default function FamilySponsorshipPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 lg:py-28 bg-warm-50 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/maple-pattern-white.png)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.20 }} aria-hidden="true" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>FAQ</SectionLabel>
             <h2 className="text-3xl font-bold text-navy-900 tracking-tight mt-3">Frequently asked questions</h2>
@@ -211,7 +223,6 @@ export default function FamilySponsorshipPage() {
         </div>
       </section>
 
-      <ConsultationCTA />
     </>
   );
 }
