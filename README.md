@@ -35,19 +35,3 @@ src/
   index.css      # Global styles + animations
 public/          # Static assets (images, logo, patterns)
 ```
-
-## Placeholder Content to Replace Before Launch
-
-- RCIC license number (`XXXXXXX`)
-- Office addresses (`[Address Placeholder]`)
-- Phone numbers (`+1 (XXX) XXX-XXXX`, `+230 XXXX XXXX`)
-- WhatsApp link (`https://wa.me/11234567890`)
-- Google Maps embed URLs (currently pointing to Ottawa & Port Louis)
-- Official CICC/RCIC badge image
-- Payment gateway integration
-
-## Notes
-
-- WordPress / Thrive Architect migration notes are in component file comments
-- All section backgrounds use `maple-pattern-white.png` or `maple-pattern-dark.png` overlays
-- EN/FR language toggle is UI-only — i18n wiring needed for production
